@@ -47,7 +47,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   
-   ## 変更後[:email, → :name]
+   ## 今回はemailなので変更しない
   config.authentication_keys = [:email] 
 
   # Configure parameters from the request object used for authentication. Each entry

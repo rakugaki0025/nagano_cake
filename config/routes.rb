@@ -18,6 +18,12 @@ Rails.application.routes.draw do
    # scopeでは /public とは表示されない 例 /homes
   scope module: :public do
     get 'homes' => 'homes#top'
+      # 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    #get 'home/about' => "homes#about", as: 'about'
+    
+      # users ルーティング自動生成 onlyで(限定生成)
+    #resources :users, only: [:show, :index, :edit, :update]
+      
   end
   
    # namespaceでは /admin が表示される 例 /admin/homes

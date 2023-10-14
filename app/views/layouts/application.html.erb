@@ -1,5 +1,6 @@
+  <!-- nagano_cake_views_layouts_application -->
 <!DOCTYPE html>
-<!--nagano_cake-->
+
 
 <html>
   <head>
@@ -8,12 +9,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
+    <script src="https://kit.fontawesome.com/5e22f18747.js" crossorigin="anonymous"></script>
+      <!-- FontAwesomeの記述 -->
+    
       <!-- 変更済み -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    
+    
     <%= yield %>
+    
   </body>
+
 </html>
+
+
