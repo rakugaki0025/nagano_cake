@@ -1,8 +1,9 @@
-<h2>Log in_#_newページ</h2>
+<h2>admin_Log in_#_sessions_newページ</h2>
 <!-- nagano_views_admin_sessions_new -->
 
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @admin, url: admin_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
