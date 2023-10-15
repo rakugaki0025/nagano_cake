@@ -1,0 +1,20 @@
+  <!-- nagano_view_pablic_customers_show -->
+<h1>log_in_後_pablic_customers_show_顧客のマイページ画面</h1>
+  
+  
+<main>
+  <div class="container" >
+    <div class="row">
+      <table class="table table-striped">
+          <tbody>
+             氏名            <%= @customer.first_name %><%= @customer.last_name %><br>
+             カナ            <%= @customer.first_name_kana %><%= @customer.last_name_kana %><br>
+             郵便番号        <%= @customer.postal_code %><br>
+             住所            <%= @customer.address %><br>
+             電話番号        <%= @customer.telephone_number %><br>
+             メールアドレス  <%= @customer.email %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</main>

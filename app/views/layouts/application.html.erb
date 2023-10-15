@@ -16,9 +16,68 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        
+        <div class="container">
+          <div class="row">
+            <!--table class="table table-striped"-->
+                <!-- logo_画像_遷移機能外す予定 -->
+              <a class="navbar-brand bg-dark" href="/">
+                <span>LOGO画像</span>
+              </a>
+            
+              <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
+                  <!-- ログイン_ログアウト -->
+                <ul class="navbar-nav ml-auto">
+                      <!-- ログイン_状態 --
+                  <% if customer_signed_in? %>
+                      <!-- マイページ_pablic△ -->
+                    <li class="nav-item">
+                      <%= link_to "マイページ", new_customer_registration_path %>
+                    </li>
+                            <!--%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %-->
+                      <!-- 商品一覧_pablic△ -->
+                    <li class="nav-item">
+                      <%= link_to "商品一覧", new_customer_registration_path %>
+                    </li>
+                      <!-- カート_pablic△ -->
+                    <li class="nav-item">
+                      <%= link_to "カート", new_customer_registration_path %>
+                    </li>
+                      <!-- ログアウトボタン_pablic -->
+                    <li class="nav-item">
+                      <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+                    </li>
+                    
+                      <!-- ログアウト_状態 --
+                  <% else %>
+                      <!-- About_pablic△ -->
+                    <li class="nav-item">
+                      <%= link_to "About", new_customer_registration_path %>
+                    </li>
+                      <!-- 商品一覧_pablic△ -->
+                    <li class="nav-item">
+                      <%= link_to "商品一覧", new_customer_registration_path %>
+                    </li>
+                      <!-- 新規登録_pablic〇 -->
+                    <li class="nav-item">
+                      <%= link_to "新規登録", new_customer_registration_path %>
+                    </li>
+                      <!-- ログインボタン_pablic〇 -->
+                    <li class="nav-item">
+                      <%= link_to "ログイン", new_customer_session_path %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <!--/table-->
+          </div>
+        </div>
+      
+      </nav>
+    </header>
     
     <%= yield %>
     

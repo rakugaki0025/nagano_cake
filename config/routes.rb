@@ -14,16 +14,22 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-  
    # scopeでは /public とは表示されない 例 /homes
   scope module: :public do
+      ## homes/topページ
     get 'homes' => 'homes#top'
-      # 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    #get 'home/about' => "homes#about", as: 'about'
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'homes/about' => "homes#about", as: 'about'
     
-      # users ルーティング自動生成 onlyで(限定生成)
-    #resources :users, only: [:show, :index, :edit, :update]
-      
+      ## customers ルーティング自動生成 onlyで(限定生成)
+    resource :customers, only: [:show, :edit, :update]
+      ## 顧客の退会確認画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'customers/confirm' => "customers#confirm", as: 'confirm'
+      ## 顧客の退会処理(ステータスの更新)
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    patch 'customers/withdrow' => "customers#withdrow", as: 'withdrow'
+    
   end
   
    # namespaceでは /admin が表示される 例 /admin/homes

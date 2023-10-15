@@ -1,8 +1,14 @@
 class Public::HomesController < ApplicationController
 ##nagano_controllers_public_homes
-
-    def top
+  
+    ## 顧客のトップページ
+  def top
        
-    end
+  end
+    
+    ## 顧客のアバウト
+  def about
+    
+  end
 
 end
