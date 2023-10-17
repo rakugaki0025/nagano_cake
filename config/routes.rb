@@ -22,7 +22,10 @@ Rails.application.routes.draw do
     get 'homes/about' => "homes#about", as: 'about'
     
       ## customers ルーティング自動生成 onlyで(限定生成)
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :update]
+      ## 顧客の登録情報編集画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'customers/ragistrations/edit' => "customers#edit", as: 'ragistrations/edit'
       ## 顧客の退会確認画面
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'customers/confirm' => "customers#confirm", as: 'confirm'

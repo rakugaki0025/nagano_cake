@@ -3,18 +3,63 @@
   
   
 <main>
-  <div class="container" >
+  <p id="notice"></p>
+  
+  <div class="container">
     <div class="row">
-      <table class="table table-striped">
-          <tbody>
-             氏名            <%= @customer.first_name %><%= @customer.last_name %><br>
-             カナ            <%= @customer.first_name_kana %><%= @customer.last_name_kana %><br>
-             郵便番号        <%= @customer.postal_code %><br>
-             住所            <%= @customer.address %><br>
-             電話番号        <%= @customer.telephone_number %><br>
-             メールアドレス  <%= @customer.email %>
-          </tbody>
-      </table>
+      <div class="col-7 col-4">
+        <table>
+            <!-- マイページ -->
+          <thead>
+            <th>マイページ</th>
+          </thead>
+            <tbody>
+                <!-- 氏名 -->
+              <tr>
+                <td>氏名</td>
+                  <td>
+                    <%= @customer.first_name %> <%= @customer.last_name %>
+                  </td>
+              </tr>
+                <!-- カナ -->
+              <tr>
+                <td>カナ</td>
+                  <td>
+                    <%= @customer.first_name_kana %><%= @customer.last_name_kana %>
+                  </td>
+              </tr>
+                <!-- 郵便番号 -->
+              <tr>
+                <td>郵便番号</td>
+                  <td>
+                    <%= @customer.postal_code %>
+                  </td>
+              </tr>
+                <!-- 住所 -->
+              <tr>
+                <td>住所</td>
+                  <td>
+                    <%= @customer.address %>
+                  </td>
+              </tr>
+                <!-- 電話番号 -->
+              <tr>
+                <td>電話番号</td>
+                  <td>
+                    <%= @customer.telephone_number %>
+                  </td>
+              </tr>
+                <!-- メールアドレス -->
+              <tr>
+                <td>メールアドレス</td>
+                  <td>
+                    <%= @customer.email %>
+                  </td>
+              </tr>
+                <!-- -->
+            </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </main>

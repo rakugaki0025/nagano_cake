@@ -3,27 +3,34 @@
   
   
 <main>
-  <div class="container" >
+  <p id="notice"></p>
+  
+  <div class="container">
     <div class="row">
-      <table class="table table-striped">
-        
-        <h1>本当に退会しますか？</h1><br>
-        
+      <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        <table class="table table-striped">
+          
+          <h1>本当に退会しますか？</h1><br>
+          
           退会すると、会員情報や<br>
           これまでの購入履歴が閲覧できなくなります。<br>
           退会する場合、「退会する」をクリックしてください。
-        
-      </table>
-      
-        <!-- 退会しない△ -->
-      <li class="nav-item">
-        <%= link_to "退会しない", new_customer_session_path %>
-      </li>
-        <!-- 退会する△ -->
-      <li class="nav-item">
-      　<%= link_to "退会する", new_customer_session_path %>
-    　</li>
-      
+          
+            <!-- 退会する_退会しない -->
+          <ul>
+              <!-- 退会しない△ -->
+            <li class="nav-item">
+              <%= link_to "退会しない", new_customer_session_path %>
+            </li>
+              <!-- 退会する△ -->
+            <li class="nav-item">
+            　<%= link_to "退会する", new_customer_session_path %>
+          　</li>
+          　
+          </ul>
+          
+        </table>
+      </div>
     </div>
   </div>
 </main>

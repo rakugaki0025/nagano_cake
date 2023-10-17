@@ -1,21 +1,61 @@
-<!-- nagano_view_pablic_customers_edit -->
-<h1>log_in_後_pablic_customers_confirm_顧客の登録情報編集画面</h1>
+<!-- nagano_view_pablic_customers_ragistrations/edit -->
+<h1>log_in_後_pablic_customers_ragistrations_edit_顧客の登録情報編集画面</h1>
   
   
 <main>
-  <div class="container" >
+  <p id="notice"></p>
+  
+  <div class="container px-5 px-sm-0">
     <div class="row">
       <table class="table table-striped">
-          
-          <h2>会員情報編集</h2>
-             氏名            <%= @customer.first_name %><%= @customer.last_name %><br>
-             カナ            <%= @customer.first_name_kana %><%= @customer.last_name_kana %><br>
-             郵便番号        <%= @customer.postal_code %><br>
-             住所            <%= @customer.address %><br>
-             電話番号        <%= @customer.telephone_number %><br>
-             メールアドレス  <%= @customer.email %>
-          
-          
+                   <!-- 編集ボタン -->
+              <tbody>
+              <tr>
+              <!--<td>-->
+              <!--  <!^^% if @user == current_user %>-->
+              <!--    <!--%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success" %>-->
+              <!--  <!--% end %>-->
+              <!--</td>-->
+              
+                <!-- destroy -->
+              <!--<td>-->
+              <!--  <!% if @user == current_user %>-->
+              <!--    <!%= link_to "Destroy", book_path(@book.id), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>-->
+              <!--  <!% end %>-->
+              <!--</td>-->
+              <div class="col-md-3">
+              <div class="col-md-8 offset-md-1">
+            
+          <form class="edit_customer" id="edit_customer" action="/customers" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" autocomplete="off"><input type="hidden" name="authenticity_token" value="l394MW8OzCPhMAO8d_DupwvhulUpjyVrZZeXM_tusyVSAuFDx4V6Z485vFA9ZfmXGTiwrWGSwtFPS-aYM_SAMg" autocomplete="off">
+  
+
+  <div class="field">
+    <label for="customer_email">Email</label><br>
+    <input autofocus="autofocus" autocomplete="email" type="email" value="abcd@002" name="customer[email]" id="customer_email">
+  </div>
+
+
+  <div class="field">
+    <label for="customer_password">Password</label> <i>(leave blank if you don't want to change it)</i><br>
+    <input autocomplete="new-password" type="password" name="customer[password]" id="customer_password">
+      <br>
+      <em>6 characters minimum</em>
+  </div>
+
+  <div class="field">
+    <label for="customer_password_confirmation">Password confirmation</label><br>
+    <input autocomplete="new-password" type="password" name="customer[password_confirmation]" id="customer_password_confirmation">
+  </div>
+
+  <div class="field">
+    <label for="customer_current_password">Current password</label> <i>(we need your current password to confirm your changes)</i><br>
+    <input autocomplete="current-password" type="password" name="customer[current_password]" id="customer_current_password">
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Update" data-disable-with="Update">
+  </div>
+</form>
       </table>
     </div>
   </div>

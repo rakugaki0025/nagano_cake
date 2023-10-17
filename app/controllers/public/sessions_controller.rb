@@ -1,3 +1,5 @@
+## app_controllers_public_ragistrations_顧客ログイン
+
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
@@ -24,4 +26,25 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
+          ## sign_in と sign_up 注意
+          ## ログイン後に遷移する場所
+          ## ここでのresource はログイン,ログアウト時でしか使われない
+  def after_sign_in_path_for(resource)
+          
+          ## /homes, top画面に遷移したい
+          ## ここでのresource はログイン,ログアウト時でしか使われない
+      homes_path
+          
+  end
+  
+          ## ログアウト後に遷移する場所
+  def after_sign_out_path_for(resource)
+          
+          ## public, homes/topに遷移
+      homes_path
+          
+          
+  end
+  
 end
