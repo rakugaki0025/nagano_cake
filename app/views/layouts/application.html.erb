@@ -35,42 +35,49 @@
                 <ul class="navbar-nav ml-auto">
                       <!-- ログイン_状態 --
                   <% if customer_signed_in? %>
-                      <!-- マイページ_pablic△ -->
+                  
+                      <!-- マイページ_pablic〇 -->
                     <li class="nav-item">
-                      <%= link_to "マイページ", new_customer_registration_path %>
+                      <%= link_to "マイページ", customers_my_page_path %>
                     </li>
-                            <!--%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %-->
+                    
                       <!-- 商品一覧_pablic△ -->
                     <li class="nav-item">
                       <%= link_to "商品一覧", new_customer_registration_path %>
                     </li>
+                    
                       <!-- カート_pablic△ -->
                     <li class="nav-item">
                       <%= link_to "カート", new_customer_registration_path %>
                     </li>
-                      <!-- ログアウトボタン_pablic -->
+                    
+                      <!-- ログアウトボタン_pablic〇 -->
                     <li class="nav-item">
                       <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
                     </li>
                     
                       <!-- ログアウト_状態 --
                   <% else %>
-                      <!-- About_pablic△ -->
+                      <!-- About_pablic〇 -->
                     <li class="nav-item">
-                      <%= link_to "About", new_customer_registration_path %>
+                      <%= link_to "About", about_path %>
                     </li>
+                    
                       <!-- 商品一覧_pablic△ -->
                     <li class="nav-item">
                       <%= link_to "商品一覧", new_customer_registration_path %>
                     </li>
+                    
                       <!-- 新規登録_pablic〇 -->
                     <li class="nav-item">
                       <%= link_to "新規登録", new_customer_registration_path %>
                     </li>
+                    
                       <!-- ログインボタン_pablic〇 -->
                     <li class="nav-item">
                       <%= link_to "ログイン", new_customer_session_path %>
                     </li>
+                    
                   <% end %>
                 </ul>
               </div>

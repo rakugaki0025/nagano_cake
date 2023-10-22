@@ -1,0 +1,169 @@
+=> Booting Puma
+=> Rails 6.1.7.6 application starting in development 
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 5.6.7 (ruby 3.1.2-p20) ("Birdie's Version")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 2171
+* Listening on http://127.0.0.1:8080
+* Listening on http://[::1]:8080
+Use Ctrl-C to stop
+Started GET "/customers" for 133.32.225.85 at 2023-10-21 12:46:27 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Public::CustomersController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/customers/show.html.erb within layouts/application
+  Rendered public/customers/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2680)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2782)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 6564)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for nil:NilClass):
+    18:               <tr>
+    19:                 <td>氏名</td>
+    20:                   <td>
+    21:                     <%= @customer.first_name %> <%= @customer.last_name %>
+    22:                   </td>
+    23:               </tr>
+    24:                 <!-- カナ -->
+  
+app/views/public/customers/show.html.erb:21
+Started GET "/customers/sign_up" for 133.32.225.85 at 2023-10-21 12:46:30 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/registrations/new.html.erb within layouts/application
+  Rendered public/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 275)
+  Rendered public/shared/_links.html.erb (Duration: 3.2ms | Allocations: 387)
+  Rendered public/registrations/new.html.erb within layouts/application (Duration: 67.0ms | Allocations: 7278)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 88.5ms | Allocations: 9937)
+Completed 200 OK in 114ms (Views: 94.2ms | ActiveRecord: 2.6ms | Allocations: 20857)
+
+
+Started GET "/customers/sign_up" for 133.32.225.85 at 2023-10-21 12:46:37 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/registrations/new.html.erb within layouts/application
+  Rendered public/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 46)
+  Rendered public/shared/_links.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered public/registrations/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2990)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 4936)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.0ms | Allocations: 5672)
+
+
+Started GET "/customers/sign_up" for 133.32.225.85 at 2023-10-21 12:46:39 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/registrations/new.html.erb within layouts/application
+  Rendered public/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered public/shared/_links.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered public/registrations/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2874)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 4768)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.0ms | Allocations: 5347)
+
+
+Started GET "/customers/sign_up" for 133.32.225.85 at 2023-10-21 12:46:47 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/registrations/new.html.erb within layouts/application
+  Rendered public/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered public/shared/_links.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered public/registrations/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2875)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 4770)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.0ms | Allocations: 5365)
+
+
+Started POST "/customers" for 133.32.225.85 at 2023-10-21 12:48:06 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "customer"=>{"last_name"=>"福原", "first_name"=>"恭平", "last_name_kana"=>"フクハラ", "first_name_kana"=>"キョウヘイ", "email"=>"abcd@006", "postal_code"=>"0000", "address"=>"東京", "telephone_number"=>"01200120", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "customers" WHERE "customers"."email" = ? LIMIT ?[0m  [["email", "abcd@006"], ["LIMIT", 1]]
+  [1m[36mCustomer Create (5.7ms)[0m  [1m[32mINSERT INTO "customers" ("email", "encrypted_password", "last_name", "first_name", "last_name_kana", "first_name_kana", "postal_code", "address", "telephone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "abcd@006"], ["encrypted_password", "$2a$12$wmkdVrJVDf6YD.ZNCw/XBem.8VigEvWo0l4t2D5onfnaDEB1F1cDm"], ["last_name", "福原"], ["first_name", "恭平"], ["last_name_kana", "フクハラ"], ["first_name_kana", "キョウヘイ"], ["postal_code", "0000"], ["address", "東京"], ["telephone_number", "01200120"], ["created_at", "2023-10-21 12:48:06.763896"], ["updated_at", "2023-10-21 12:48:06.763896"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to https://3aa1c065d5b94b5684f9613c809ccc2b.vfs.cloud9.ap-northeast-1.amazonaws.com/customers
+Completed 303 See Other in 374ms (ActiveRecord: 13.0ms | Allocations: 14087)
+
+
+Started GET "/customers" for 133.32.225.85 at 2023-10-21 12:48:06 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::CustomersController#show as HTML
+  [1m[36mCustomer Load (0.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? ORDER BY "customers"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/public/customers_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering public/customers/show.html.erb within layouts/application
+  Rendered public/customers/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 66)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2087)
+Completed 200 OK in 14ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 3670)
+
+
+Started DELETE "/customers/sign_out" for 133.32.225.85 at 2023-10-21 12:48:11 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mCustomer Load (0.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? ORDER BY "customers"."id" ASC LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to https://3aa1c065d5b94b5684f9613c809ccc2b.vfs.cloud9.ap-northeast-1.amazonaws.com/
+Completed 303 See Other in 11ms (ActiveRecord: 0.1ms | Allocations: 2935)
+
+
+Started GET "/" for 133.32.225.85 at 2023-10-21 12:48:11 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::HomesController#top as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/homes/top.html.erb within layouts/application
+  Rendered public/homes/top.html.erb within layouts/application (Duration: 0.5ms | Allocations: 248)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 2386)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 3681)
+
+
+Started GET "/customers/sign_in" for 133.32.225.85 at 2023-10-21 12:48:14 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/sessions/new.html.erb within layouts/application
+  Rendered public/shared/_links.html.erb (Duration: 0.5ms | Allocations: 181)
+  Rendered public/sessions/new.html.erb within layouts/application (Duration: 53.9ms | Allocations: 2140)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 136.0ms | Allocations: 4194)
+Completed 200 OK in 146ms (Views: 144.2ms | ActiveRecord: 0.0ms | Allocations: 7161)
+
+
+Started GET "/customers" for 133.32.225.85 at 2023-10-21 12:49:06 +0000
+Cannot render console from 133.32.225.85! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Public::CustomersController#show as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering public/customers/show.html.erb within layouts/application
+  Rendered public/customers/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1936)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2013)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2516)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for nil:NilClass):
+    18:               <tr>
+    19:                 <td>氏名</td>
+    20:                   <td>
+    21:                     <%= @customer.first_name %> <%= @customer.last_name %>
+    22:                   </td>
+    23:               </tr>
+    24:                 <!-- カナ -->
+  
+app/views/public/customers/show.html.erb:21
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2023-10-21 12:49:19 +0000 ===
+- Goodbye!
+Exiting

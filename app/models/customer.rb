@@ -7,6 +7,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   
-  ## 退会機能記述場所
   
 end

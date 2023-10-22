@@ -1,71 +1,93 @@
   <!-- nagano_views_public_registrations_new -->
 <h2>pablic_Sign up_#_registrations_newページ</h2>
 
-<h2>顧客_新規登録画面</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <!-- error_messages -->
-    <%= render "public/shared/error_messages", resource: resource %>
-      
-    
-      <!-- last_name_box -->
-    <strong class="field">
-      <%= f.label :姓 %>
-      <%= f.text_field :last_name, autofocus: true %>
-    </strong>
-      <!-- first_name_box -->
-    <strong class="field">
-      <%= f.label :名 %>
-      <%= f.text_field :first_name, autofocus: true %>
-    </strong><br>
-      <!-- last_name_box -->
-    <strong class="field">
-      <%= f.label :セイ %>
-      <%= f.text_field :last_name_kana, autofocus: true %>
-    </strong>
-      <!-- first_name_kana_box -->
-    <strong class="field">
-      <%= f.label :メイ %>
-      <%= f.text_field :first_name_kana, autofocus: true %>
-    </strong>
-      <!-- e-mail_box -->
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-      <!-- postal_code_box -->
-    <div class="field">
-      <%= f.label :postal_code %><br />
-      <%= f.text_field :postal_code, autofocus: true %>
-    </div>
-      <!-- address_box -->
-    <div class="field">
-      <%= f.label :address %><br />
-      <%= f.text_field :address, autofocus: true %>
-    </div>
-      <!-- telephone_number_box -->
-    <div class="field">
-      <%= f.label :telephone_number %><br />
-      <%= f.text_field :telephone_number, autofocus: true %>
-    </div>
-      <!-- password_box -->
-    <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-      <!-- passoword_confirmation_box -->
-    <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-      <!-- sign_up_box -->
-    <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-  <% end %>
 
-  <%= render "public/shared/links" %>
-
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        
+        <h2>顧客_新規登録画面</h2>
+        
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <!-- error_messages -->
+            <%= render "public/shared/error_messages", resource: resource %>
+              
+            
+              <!-- last_name_box -->
+            <strong class="field">
+              <%= f.label :姓 %>
+              <%= f.text_field :last_name, autofocus: true %>
+            </strong>
+              <!-- first_name_box -->
+            <strong class="field">
+              <%= f.label :名 %>
+              <%= f.text_field :first_name, autofocus: true %>
+            </strong><br>
+              <!-- last_name_box -->
+            <strong class="field">
+              <%= f.label :セイ %>
+              <%= f.text_field :last_name_kana, autofocus: true %>
+            </strong>
+              <!-- first_name_kana_box -->
+            <strong class="field">
+              <%= f.label :メイ %>
+              <%= f.text_field :first_name_kana, autofocus: true %>
+            </strong>
+            
+              <!-- e-mail_box -->
+            <div class="field">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            
+              <!-- postal_code_box -->
+            <div class="field">
+              <%= f.label :郵便番号 %>
+              <%= f.text_field :postal_code, autofocus: true %>
+            </div>
+            
+              <!-- address_box -->
+            <div class="field">
+              <%= f.label :住所 %>
+              <%= f.text_field :address, autofocus: true %>
+            </div>
+            
+              <!-- telephone_number_box -->
+            <div class="field">
+              <%= f.label :電話番号 %>
+              <%= f.text_field :telephone_number, autofocus: true %>
+            </div>
+            
+              <!-- password_box -->
+            <div class="field">
+              <%= f.label :パスワード %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> 文字以上)</em>
+                <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+            
+              <!-- passoword_confirmation_box -->
+            <div class="field">
+              <%= f.label :パスワード（確認用） %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+            
+              <!-- sign_up_box -->
+            <div class="actions">
+              <%= f.submit "Sign up" %>
+            </div>
+          <% end %>
+          
+          <h4>既に登録済みの方</h4>
+          
+          <%= render "public/shared/links" %>
+          
+          からログインしてください。
+          
+      </div>
+    </div>
+  </div>
+</main>

@@ -16,19 +16,29 @@ Rails.application.routes.draw do
   
    # scopeでは /public とは表示されない 例 /homes
   scope module: :public do
-      ## homes/topページ
-    get 'homes' => 'homes#top'
+    
+      ## root to設定で homes/topページ遷移設定
+    root to: 'homes#top'
+    
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'homes/about' => "homes#about", as: 'about'
     
-      ## customers ルーティング自動生成 onlyで(限定生成)
-    resource :customers, only: [:show, :update]
+      ## 顧客のマイページ
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'customers/my_page' => "customers#show", as: 'customers_my_page'
+    
       ## 顧客の登録情報編集画面
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    get 'customers/ragistrations/edit' => "customers#edit", as: 'ragistrations/edit'
+    get 'customers/information/edit' => "customers#edit", as: 'information_edit'
+    
+      ## 顧客の update patch
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    patch 'customers/information' => "customers#update", as: 'information_update'
+    
       ## 顧客の退会確認画面
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'customers/confirm' => "customers#confirm", as: 'confirm'
+    
       ## 顧客の退会処理(ステータスの更新)
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     patch 'customers/withdrow' => "customers#withdrow", as: 'withdrow'
