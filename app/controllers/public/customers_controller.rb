@@ -15,12 +15,6 @@ class Public::CustomersController < ApplicationController
         ## 顧客の登録情報編集画面
   def edit
         
-        ## データ（レコード）を1件取得
-      ##@user = Customer.find(params[:id])
-        
-        ## ログイン中の個人を特定する
-      ##@customer = @user.customer
-        
         ## ログイン中のユーザーレコード取得
         ## current_(models名)
       @customer = current_customer

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       ## root to設定で homes/topページ遷移設定
     root to: 'homes#top'
     
+### customers    
+
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'homes/about' => "homes#about", as: 'about'
     
@@ -42,6 +44,16 @@ Rails.application.routes.draw do
       ## 顧客の退会処理(ステータスの更新)
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     patch 'customers/withdrow' => "customers#withdrow", as: 'withdrow'
+    
+### items
+    
+      ## 顧客の商品一覧
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'items' => "items#index", as: 'items'
+    
+      ## 顧客の商品詳細
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'items/:id' => "items#show", as: 'item'
     
   end
   
