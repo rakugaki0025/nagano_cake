@@ -1,3 +1,5 @@
+## app_controllers_admin_ragistrations_管理者新規登録_今回は使わない？
+
 # frozen_string_literal: true
 
 class Admin::RegistrationsController < Devise::RegistrationsController
