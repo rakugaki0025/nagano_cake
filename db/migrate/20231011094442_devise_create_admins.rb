@@ -5,6 +5,7 @@
 class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
   def change
     create_table :admins do |t|
+      
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -34,8 +35,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
-      t.timestamps null: false
+      
+      t.timestamps null: false        # t.データ型 :カラム名, null: false
+      
     end
 
     add_index :admins, :email,                unique: true

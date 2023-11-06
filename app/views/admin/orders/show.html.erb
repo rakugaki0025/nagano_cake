@@ -1,20 +1,16 @@
-  <!-- nagano_view_pablic_items_index -->
+<!-- nagano_view_admin_orders_show_top -->
+ 
+<h1>admin_orders_show_注文詳細画面</h1>
   
-<h1>pablic_items_index_商品一覧画面</h1>
-
-
+  
   <main>
-    <p id="notice"></p>
-    
     <div class="container">
       <div class="row">
         <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-          
-          <h1>商品一覧</h1>
-          
-          <h6>(全X件)</h6>
-          
-          <% @items.each do |item| %>
+        
+        <h3>注文詳細画面</h3>
+        
+        <% @order.each do |order| %>
                 <!-- 商品一覧表示 -->
             <table>
                   <!-- 商品ID,商品名,価格_投稿内容 -->
@@ -22,7 +18,7 @@
                 <tr align="center">
                     <!-- 商品画像 -->
                   <td>
-                    <%= image_tag item.get_image, size: "360x300" %>
+                    <%= image_tag cart_item.get_image, size: "360x300" %>
                   </td>
                   <th></th>
                     <!-- 商品名 -->
@@ -47,4 +43,5 @@
       </div>
     </div>
   </main>
-
+  
+  

@@ -21,7 +21,7 @@ class Public::CustomersController < ApplicationController
       
   end
      
-        ## 顧客の登録情報更新
+        ## 顧客の登録情報更新 information_update_path
   def update
     
         ##アクセス制限

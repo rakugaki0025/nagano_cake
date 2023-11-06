@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   ## nagano_models_application_controller
   ## 全てのコントローラに対する処理を行える権限を持つ
   
+  protect_from_forgery
+  
   # before_action :authenticate_user!, except: [:top, :about]
   #         # ログイン認証が済んでない,ログイン画面にリダイレクト
   

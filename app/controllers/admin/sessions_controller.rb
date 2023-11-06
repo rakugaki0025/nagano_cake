@@ -35,7 +35,7 @@ class Admin::SessionsController < Devise::SessionsController
           
           ## /homes, top画面に遷移したい
           ## ここでのresource はログイン,ログアウト時でしか使われない
-          ## root_path へ遷移
+          ## 注文履歴一覧_admin_top_path へ遷移
       admin_root_path
           
   end
@@ -43,8 +43,8 @@ class Admin::SessionsController < Devise::SessionsController
           ## ログアウト後に遷移する場所
   def after_sign_out_path_for(resource)
           
-          ## public, root_to = homes/topに遷移
-      admin_root_path
+          ## customers_root_to = homes/topに遷移
+      root_path
           
   end
   

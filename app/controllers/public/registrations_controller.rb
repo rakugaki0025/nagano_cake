@@ -75,7 +75,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
           ## /homes, top画面に遷移したい
           ## ここでのresource はログイン,ログアウト時でしか使われない
           ## root_pathにしないとひっかかるかも…？
-      customers_path
+      root_path
           
           
   end

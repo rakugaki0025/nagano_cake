@@ -6,10 +6,48 @@
     <div class="container">
       <div class="row">
         <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-          
-          
-          
-          
+            <!-- 商品新規登録画面 -->
+          <div>
+            <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+              <!--<table>-->
+                
+                <!-- 商品画像△ -->
+              <div class="form-group">
+                <label for="image">
+                  商品画像
+                </label>
+                  <%= f.file_field :image, accept: "image/*" %>
+              </div>
+                <!-- 商品名△ -->
+              <div class="form-group">
+                <label for="name">
+                  商品名
+                </label>
+                  <%= f.text_field :name %>
+              </div>
+                <!-- 商品説明△ -->
+              <div class="form-group">
+                <label for="intoroduction">
+                 商品説明
+                </label>
+                  <%= f.text_field :introduction %>
+              </div>
+                <!-- 税込み価格△ -->
+              <div class="form-group">
+                <label for="price">
+                 税込み価格
+                </label>
+                  <%= f.text_field :price %>
+              </div>
+                <!-- 新規登録△ -->
+              <strong class="form-group">
+                <%= f.submit '新規登録', class:"btn btn-success" %>
+              </strong>
+            　
+              <!--</table>-->
+              
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -35,6 +35,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
       
       ## 追加
+      
       t.string :last_name, null: false                  # t.データ型 :カラム名, null: false
       t.string :first_name, null: false                 # t.データ型 :カラム名, null: false
       t.string :last_name_kana, null: false             # t.データ型 :カラム名, null: false

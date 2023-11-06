@@ -1,15 +1,96 @@
 <!-- nagano_view_admin_customers_edit_top -->
  
-<h1>adomin_Customers_edit_顧客編集画面</h1>
+<h1>admin_Customers_edit_顧客編集画面</h1>
   
+  <!-- エラーメッセージ -->
+  <% if @customer.errors.any? %>
+    <!-- エラーカウント -->
+    <h2><%= @customer.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+        <% @cusotmer.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+  <% end %>
+
   <main>
     <div class="container">
       <div class="row">
         <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
           
-          
-          
-          
+          <h3>会員情報編集</h3>
+            
+            <%= form_with model: @customer, url: admin_customers_update_path, method: :patch do |f| %>
+                <!-- 会員ID〇 -->
+              <div>
+                <label for="id">
+                  会員ID
+                </label>
+                  <%= @customer.id %>
+              </div><br />
+                <!-- 氏名〇 -->
+              <div class="form-group">
+                <label for="name">
+                  氏名
+                </label>
+                  <%= f.text_field :last_name %>
+                  <%= f.text_field :first_name %>
+              </div>
+                <!-- 氏名kana〇 -->
+              <div class="form-group">
+                <label for="name">
+                  フリガナ
+                </label>
+                  <%= f.text_field :last_name_kana %>
+                  <%= f.text_field :first_name_kana %>
+              </div>
+                <!-- 郵便番号〇 -->
+              <div class="form-group">
+                <label for="postal_code">
+                  郵便番号
+                </label>
+                  <%= f.text_field :postal_code %>
+              </div>
+                <!-- 住所〇 -->
+              <div class="form-group">
+                <label for="address">
+                  住所
+                </label>
+                  <%= f.text_field :address %>
+              </div>
+                <!-- 電話番号〇 -->
+              <div class="form-group">
+                <label for="telephone_number">
+                  電話番号
+                </label>
+                  <%= f.text_field :telephone_number %>
+              </div>
+                <!-- メールアドレス〇 -->
+              <div class="form-group">
+                <label for="email">
+                  メールアドレス
+                </label>
+                  <%= f.text_field :email %>
+              </div>
+                <!-- 会員ステータス〇 -->
+              <div class="form-group">
+                <label for="is_active">
+                  会員ステータス
+                </label>
+                  <%= f.radio_button :is_active, true %>
+                    <%= f.label :is_active, "有効" %>
+                    
+                  <%= f.radio_button :is_active, false %>
+                    <%= f.label :is_active, "無効" %>
+              </div>
+                <!-- 新規登録〇 -->
+              <strong class="form-group">
+                <%= f.submit '変更を保存', class:"btn btn-success" %>
+              </strong>
+            <% end %>
+            
         </div>
       </div>
     </div>

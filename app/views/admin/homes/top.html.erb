@@ -1,23 +1,75 @@
  <!-- nagano_view_admin_homes_top -->
  
-<h1>_adomin_homes_top画面</h1>
+<h1>_admin_homes_top画面</h1>
   
   
-  <!-- フラッシュメッセージ投稿成功時 -->
+    <!-- フラッシュメッセージ投稿成功時 -->
   <div>
     <%= flash[:notice] %>
   </div>
  
-  <main>
     <div class="container">
       <div class="row">
         <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-            <!--  admin-->
-          admin_homes_top
+          
+          <h3>注文履歴一覧</h3>
+          
+              <!-- 購入日時,注文個数,注文ステータス -->
+            <thead>
+              <tr align=”center”>
+                  
+                <th>購入日時</th>
+                <th></th>
+                <th>注文個数</th>
+                <th></th>
+                
+                <th>注文ステータス</th>
+                <th></th>
+                  
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+          
+          <% @customers.each do |customer| %>
+                <!-- 商品一覧表示 -->
+              <table>
+                  <!-- 商品ID,商品名,価格_投稿内容 -->
+                <tbody>
+                  <tr align="center">
+                      <!-- 顧客ナンバー〇 -->
+                    <td>
+                      <%= customer.id %>
+                    </td>
+                    <th></th>
+                      <!-- 顧客名〇 -->
+                    <td>
+                      <%= link_to admin_customers_show_path(customer.id) do %>
+                        <%= customer.last_name %>
+                        <%= customer.first_name %>
+                      <% end %>
+                    </td>
+                    <td></td>
+                      <!-- メールアドレス〇 -->
+                    <td>
+                      <%= customer.email %>
+                    </td>
+                    
+                      <!-- 会員ステータス〇 -->
+                    <td>
+                      <% if customer.is_active %>
+                        有効
+                      <% else %>
+                        無効
+                      <% end %>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+                
+              </table>
+            <% end %>
           
         </div>
       </div>
     </div>
-  </main>
-
 

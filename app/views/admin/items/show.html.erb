@@ -3,12 +3,50 @@
 <h1>_admin_show_商品詳細画面</h1>
   
 
+    <!-- フラッシュメッセージ投稿成功時 -->
+  <div>
+    <%= flash[:notice] %>
+  </div>
+
   <main>
     <div class="container">
       <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-        <!--  admin-->
-            
+        <div class="mx-auto auto">
+          
+          <table>
+            <tbody>
+                <!-- 商品画像_(別型表示記載) -->
+              <tr align="left">
+                <%= image_tag @item.get_image, size: "360x300" %>
+                <!--%= image_tag @item.get_image %-->
+              </tr><br />
+                <!-- 商品名 -->
+              <tr align="right">
+                  <label for="name">
+                    商品名
+                  </label>
+                    <%= @item.name %>
+                </tr><br />
+                <!-- 商品説明 -->
+              <tr align="right">
+                  <label for="introduction">
+                    商品説明
+                  </label>
+                    <%= @item.introduction %>
+                </tr><br />
+                <!-- 税込価格(税抜価格) -->
+              <tr align="right">
+                  <label for="price">
+                    価格
+                  </label>
+                    <%= @item.price %>
+                </tr><br />
+                <!-- 編集する -->
+              <tr align="right">
+                    <%= link_to "編集する", admin_edit_path, class:"btn btn-success" %>
+                </tr>
+            </tbody>
+          </table>
           
         </div>
       </div>

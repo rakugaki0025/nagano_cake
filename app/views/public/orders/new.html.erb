@@ -1,0 +1,66 @@
+<!-- nagano_view_pablic_orders_new -->
+ 
+<h1>pablic_orders_new_注文情報入力画面</h1>
+  
+  
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        
+        
+        <h3>注文情報入力画面</h3>
+        
+        <%= form_with model: @order, url: cart_items_path, method: :post do |f| %>
+          <table>
+              
+            <h4>支払方法</h4>
+                <!-- クレジットカード△ -->
+              <div>  
+                  <%= f.radio_button :payment_method, "credit_card" %>
+                  <%= f.label :payment_method_credit_card, "クレジットカード" %>
+                </div>
+                <!-- 銀行振込△ -->
+              <div>    
+                  <%= f.radio_button :payment_method, "transfer" %>
+                  <%= f.label :payment_method_transfer, "銀行振込" %>
+                </div>
+            
+            <h4>お届け先</h4>
+                <!-- ご自身の -->
+              <div>
+                <%= f.radio_button :address, "" %>
+                <%= f.label :address, "ご自身の住所" %>
+                
+                  <option value="1">住所1</option>
+                
+              </div>
+                <!-- 登録済み住所から選択△ -->
+              <div>
+                <%= f.radio_button :address, "" %>
+                <%= f.label :address, "登録済み住所から選択" %>
+              </div>
+                <!-- 郵便番号,住所,宛名△ -->
+              <div>
+                <%= f.radio_button :address, "" %>
+                <%= f.label :address, "新しいお届け先" %><br>
+                <%= f.label :address, "郵便番号" %><br>
+                <%= f.text_field :address, class:"form-control" %>
+                <%= f.label :address, "住所" %><br>
+                <%= f.text_field :address, class:"form-control" %>
+                <%= f.label :address, "宛名" %>
+                <%= f.text_field :address, class:"form-control" %>
+              </div>
+                <!-- 確認画面へ進む△ -->
+              <strong class="form-group">
+                <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
+              </strong>
+              
+          </table>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
+
+

@@ -1,4 +1,4 @@
-  <!-- nagano_view_pablic_items_show/:id -->
+  <!-- nagano_view_pablic_items_show -->
   
 <h1>pablic_items_show_商品詳細画面</h1>
 
@@ -10,22 +10,49 @@
       <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
       
       <h1>商品詳細画像</h1>
-      
-      <h6>栃木県産のとちおとめを贅沢に使用しています。</h6>
-      
-      <h6>￥2750)(税込み)</h6>
-      
-      <h6>個数選択</h6>
-      
-      
-        <!-- カートへ入れる △ -->
-      <div>
-        <!--% if @customer == current_customer %-->
-          <%= link_to "カートに入れる", information_edit_path, class:"btn btn-success" %>
-        <!--% end %-->
-      </div>
-      
-      
+        
+          <!-- 商品詳細,価格 -->
+        <table>
+          <tbody>
+            <tr align="center">
+                <!-- 商品画像△ -->
+              <tr align="center">
+                <%= image_tag @item.get_image, size: "360x300" %>
+              </tr><br />
+                <!-- 商品名△ -->
+              <tr align="center">
+                <%= @item.name %>
+              </tr><br />
+                <!-- 商品説明△ -->
+              <tr align="center">
+                <%= @item.introduction %>
+              </tr><br />
+                <!-- 商品価格△ -->
+              <tr align="center">
+                  ￥
+                <%= @item.price %>
+                  (税込み)
+              </tr><br />
+                <!-- 商品個数,カート△ -->
+              <tr align="center">
+                <%= form_with model: CartItem.new do |f| %>
+                
+                      <!-- 商品個数 -->
+                    <%= f.select :quantity, *[1..10], {prompt: '個数選択' } %>
+                      <!-- カートに送るデータ -->
+                        <!-- f.hidden_field :商品個数(カラム), :value => @商品データ.id -->
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                      <!-- チェックボックス -->
+                    <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+                
+                <% end %>
+                
+              </tr>
+            </tr>
+            
+          </tbody>
+        </table>
+        
       </div>
     </div>
   </div>

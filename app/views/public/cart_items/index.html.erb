@@ -1,0 +1,103 @@
+<!-- nagano_view_pablic_cart_items_index -->
+ 
+<h1>pablic_cart_items_index_カート内商品一覧画面(カート表示画面)</h1>
+  
+  
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        
+          <h3>カート内商品一覧画面</h3>
+        
+            <!-- 全てのカート情報削除〇 -->
+          <strong>
+          <%= link_to '全て削除', cart_items_destroy_all_path, class:"btn btn-danger", method: :delete %>
+        </strong>
+            <!-- ショッピングカート -->
+          <table>
+                <!-- 商品名,単価,数量,小計△ -->
+            <thead>
+            <tr align=”center”>
+                  
+              <th>商品名</th>
+              <th></th>
+              <th>単価(税込み)</th>
+              <th></th>
+                
+              <th>数量</th>
+              <th>小計</th>
+              <th></th>
+                  
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+                <!-- 合計金額を出すために o 円を設定? -->
+              <% @sum = 0 %>
+              
+                <!-- 商品画像,商品名,価格,個数,小計,合計 -->
+            <tbody>
+              <% @cart_items.each do |cart_item| %>
+                  <!-- 商品一覧表示△ -->
+                <tr align="center">
+                    <!-- 商品画像〇 -->
+                  <td>
+                    <%= image_tag cart_item.item.get_image, size: "100x70" %>
+                  </td>
+                    <!-- 商品名〇 -->
+                  <td>
+                      <!-- cart_item.送信データ.name -->
+                    <%= cart_item.item.name %>
+                  </td>
+                    <!-- 単価(税込),価格〇 -->
+                  <td>
+                    <%= cart_item.item.with_tax_price%>
+                  </td>
+                    <!-- 数量の個数△ -->
+                  <td>
+                    <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
+                        <!-- 商品個数 -->
+                      <%= f.number_field :quantity %>
+                        <!-- チェックボックス -->
+                      <%= f.submit '変更', class:"btn btn-success" %>
+                  
+                    <% end %>
+                  </td>
+                    <!-- 商品の単一小計価格〇 -->
+                  <td>
+                      <!-- 商品単一合計価格 -->
+                    <%= cart_item.subtotal%>
+                  </td>
+                    <!-- 商品削除〇 -->
+                  <td>
+                    <%= link_to '削除する', cart_item_path(cart_item), class:"btn btn-danger", method: :delete %>
+                  </td>
+                    <!-- 商品の合計価格算出場所〇  -->
+                      <!-- 全ての単一商品の合計値を出すために記述しておく,無いと合計が出ない -->
+                  <td>
+                    <% @sum += cart_item.subtotal %>
+                  </td>
+                    
+                </tr>
+              
+              <% end %>
+            
+            </tbody>
+                  
+          </table>
+          
+            合計金額 <%= @sum %>
+              <!-- 買い物を続ける〇 -->
+            <div>
+            <%= link_to '買い物を続ける', root_path, class:"btn btn-primary" %>
+          </div>
+              <!-- 情報入力に進む〇 -->
+            <div>
+            <%= link_to '情報入力に進む', orders_new_path, class:"btn btn-success" %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+

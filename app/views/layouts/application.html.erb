@@ -1,141 +1,100 @@
-  <!-- nagano_cake_views_layouts_application -->
+<!-- nagano_cake_views_layouts_application -->
 <!DOCTYPE html>
-
-
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    
-    <script src="https://kit.fontawesome.com/5e22f18747.js" crossorigin="anonymous"></script>
-      <!-- FontAwesomeの記述 -->
-    
-      <!-- 変更済み -->
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+      <script src="https://kit.fontawesome.com/5e22f18747.js" crossorigin="anonymous"></script>
+        <!-- FontAwesomeの記述 -->
+        <!-- 変更済み -->
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
-  <body>
+    <body>
+  <header>
+    
     <p id="notice"></p>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        
-        <div class="container">
-          <div class="row">
-            <!--table class="table table-striped"-->
-                <!-- logo_画像_遷移機能外す予定 -->
-              <a class="navbar-brand bg-dark" href="/">
-                <span>LOGO画像</span>
-              </a>
-            
-              <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
-                
-                      <!-- customer_ログイン_ログアウト -->
-                <ul class="navbar-nav ml-auto">
-                      <!-- ログイン_状態 -->
-                  <% if customer_signed_in? %>
-                      <!-- マイページ_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "マイページ", customers_my_page_path %>
-                    </li>
-                      <!-- 商品一覧_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "商品一覧", items_path %>
-                    </li>
-                      <!-- カート_pablic△ -->
-                    <li class="nav-item">
-                      <%= link_to "カート", new_customer_registration_path %>
-                    </li>
-                      <!-- ログアウトボタン_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
-                    </li>
-                    
-                      <!-- ログアウト_状態 --
-                  <% else %>
-                      <!-- About_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "About", about_path %>
-                    </li>
-                      <!-- 商品一覧_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "商品一覧", items_path %>
-                    </li>
-                      <!-- 新規登録_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "新規登録", new_customer_registration_path %>
-                    </li>
-                      <!-- ログインボタン_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to "ログイン", new_customer_session_path %>
-                    </li>
-                  <% end %>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <div class="row">
+          <!-- logo_画像_遷移機能外す予定 -->
+            <a class="navbar-brand bg-dark" href="/">
+              <span>LOGO画像</span>
+            </a>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
+              
+                <!-- customer_admin_ログイン_ログアウト -->
+            <% if customer_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                    <!-- マイページ_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to "マイページ", customers_my_page_path %>
+                  </li>
+                    <!-- 商品一覧_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path %>
+                  </li>
+                    <!-- カート_pablic△ -->
+                  <li class="nav-item">
+                    <%= link_to "カート", new_customer_registration_path %>
+                  </li>
+                    <!-- ログアウトボタン_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
+                  </li>
                 </ul>
-                
-                      <!-- admin_ログイン_ログアウト -->
-                <ul class="navbar-nav ml-auto">
-                      <!-- ログイン_状態 --
-                  <% if admin_signed_in? %>
-                  
-                      <!-- 商品一覧_admin△ -->
-                    <li class="nav-item">
-                      <%= link_to "商品一覧", items_path %>
-                    </li>
-                    
+                <!-- admin_ログアウト -->
+            <% elsif admin_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                    <!-- 商品一覧_admin△ -->
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path %>
+                  </li>
                     <!-- 会員一覧_admin△ -->
-                    <li class="nav-item">
-                      <%= link_to "会員一覧", customers_my_page_path %>
-                    </li>
-                    
-                      <!-- 注文履歴一覧_admin△ -->
-                    <li class="nav-item">
-                      <%= link_to "注文履歴一覧", new_customer_registration_path %>
-                    </li>
-                    
-                      <!-- ログアウトボタン_pablic〇 -->
-                    <li class="nav-item">
-                      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-                    </li>
-                    
-                      <!-- ログアウト_状態 --
-                  <% else %>
-                      <!-- About_admin△ -->
-                    <li class="nav-item">
-                      <%= link_to "About", about_path %>
-                    </li>
-                    
-                      <!-- 商品一覧_admin△ -->
-                    <li class="nav-item">
-                      <%= link_to "商品一覧", items_path %>
-                    </li>
-                    
-                      <!-- 新規登録_admin〇 -->
-                    <li class="nav-item">
-                      <%= link_to "新規登録", new_customer_registration_path %>
-                    </li>
-                    
-                      <!-- ログインボタン_admin〇 -->
-                    <li class="nav-item">
-                      <%= link_to "ログイン", new_admin_session_path %>
-                    </li>
-                    
-                  <% end %>
+                  <li class="nav-item">
+                    <%= link_to "会員一覧", customers_my_page_path %>
+                  </li>
+                    <!-- 注文履歴一覧_admin△ -->
+                  <li class="nav-item">
+                    <%= link_to "注文履歴一覧", new_customer_registration_path %>
+                  </li>
+                    <!-- ログアウトボタン_admin〇 -->
+                  <li class="nav-item">
+                    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+                  </li>
                 </ul>
-                
-              </div>
-            <!--/table-->
+                <!-- ログアウト_customer -->
+            <% else %>
+              <ul class="navbar-nav ml-auto">
+                    <!-- About_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to "About", about_path %>
+                  </li>
+                    <!-- 商品一覧_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to "商品一覧", items_path %>
+                  </li>
+                    <!-- 新規登録_pablic〇 -->
+                  <li class="nav-item">
+                    <%= link_to "新規登録", new_customer_registration_path %>
+                  </li>
+                    <!-- ログインボタン_admin〇 -->
+                  <li class="nav-item">
+                    <%= link_to "ログイン", new_customer_session_path %>
+                  </li>
+                </ul>
+            <% end %>
+              
           </div>
         </div>
-      
-      </nav>
-    </header>
-    
-    <%= yield %>
-    
-  </body>
-
+      </div>
+    </nav>
+  </header>
+  
+  <%= yield %>
+  
+</body>
 </html>
-
-

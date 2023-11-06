@@ -20,8 +20,8 @@ Rails.application.routes.draw do
       ## root to設定で homes/topページ遷移設定
     root to: 'homes#top'
     
-### customers    
-
+### public_customers    
+    
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'homes/about' => "homes#about", as: 'about'
     
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     patch 'customers/withdrow' => "customers#withdrow", as: 'withdrow'
     
-### items
+### public_items
     
       ## 顧客の商品一覧
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
@@ -55,13 +55,50 @@ Rails.application.routes.draw do
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     get 'items/:id' => "items#show", as: 'item'
     
+### public_cart_items
+    
+      ## カート内商品全データ削除(全て)
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    delete 'cart_items/destroy_all' => "cart_items#destroy_all", as: 'cart_items_destroy_all'
+    
+      ## cart_itemsディレクトリ ルーティング自動生成 onlyで(限定生成)
+      ## resources :cart_items, only: [:index, :show, :create, :edit, :update, :destroy]
+    resources :cart_items, only: [:index, :edit, :create, :update, :destroy]
+    
+### public_orders
+    
+      ## 注文情報入力画面(支払い方法)
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'orders/new' => "orders#new", as: 'orders_new'
+    
+      ## 注文情報確認画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    post 'orders/confirm' => "orders#confirm", as: 'orders_confirm'
+    
+      ## 注文完了画面(サンクスページ)
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'orders/thanks' => "orders#thanks", as: 'orders_thanks'
+    
+      ## 注文情報確定
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    post 'orders' => "orders#create", as: 'orders_create'
+    
+      ## 注文履歴一覧画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'orders' => "orders#index", as: 'orders_index'
+    
+      ## 注文履歴詳細画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'orders/:id' => "orders#show", as: 'orders_show'
+    
   end
   
   
    # namespaceでは /admin が表示される 例 /admin/homes
   namespace :admin do
     
-      ## root to設定で homes/topページ遷移設定
+      ## 管理者トップページ(注文履歴一覧)
+      ## root to設定で admin_homes/topページ遷移設定
     root to: 'homes#top'
     
 ### admin_items
@@ -107,6 +144,12 @@ Rails.application.routes.draw do
       ## 顧客情報の登録
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     patch 'customers/:id' => "customers#update", as: 'customers_update'
+    
+### admin_orders
+    
+      ## 注文詳細画面
+      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
+    get 'orders/:id/' => "orders#show", as: 'orders_show'
     
     
   end
