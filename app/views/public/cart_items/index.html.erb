@@ -3,6 +3,11 @@
 <h1>pablic_cart_items_index_カート内商品一覧画面(カート表示画面)</h1>
   
   
+    <!-- フラッシュメッセージ投稿成功時 -->
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  
   <main>
     <div class="container">
       <div class="row">
@@ -10,11 +15,11 @@
         
           <h3>カート内商品一覧画面</h3>
         
-            <!-- 全てのカート情報削除〇 -->
-          <strong>
-          <%= link_to '全て削除', cart_items_destroy_all_path, class:"btn btn-danger", method: :delete %>
-        </strong>
-            <!-- ショッピングカート -->
+              <!-- 全てのカート情報削除〇 -->
+            <strong>
+              <%= link_to '全て削除', cart_items_destroy_all_path, class:"btn btn-danger", method: :delete %>
+            </strong>
+              <!-- ショッピングカート -->
           <table>
                 <!-- 商品名,単価,数量,小計△ -->
             <thead>
@@ -34,7 +39,6 @@
           </thead>
                 <!-- 合計金額を出すために o 円を設定? -->
               <% @sum = 0 %>
-              
                 <!-- 商品画像,商品名,価格,個数,小計,合計 -->
             <tbody>
               <% @cart_items.each do |cart_item| %>
@@ -51,16 +55,15 @@
                   </td>
                     <!-- 単価(税込),価格〇 -->
                   <td>
-                    <%= cart_item.item.with_tax_price%>
+                    <%= cart_item.item.with_tax_price %>
                   </td>
-                    <!-- 数量の個数△ -->
+                    <!-- 数量の個数〇 -->
                   <td>
                     <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
                         <!-- 商品個数 -->
                       <%= f.number_field :quantity %>
                         <!-- チェックボックス -->
                       <%= f.submit '変更', class:"btn btn-success" %>
-                  
                     <% end %>
                   </td>
                     <!-- 商品の単一小計価格〇 -->
@@ -77,9 +80,7 @@
                   <td>
                     <% @sum += cart_item.subtotal %>
                   </td>
-                    
                 </tr>
-              
               <% end %>
             
             </tbody>
@@ -89,12 +90,12 @@
             合計金額 <%= @sum %>
               <!-- 買い物を続ける〇 -->
             <div>
-            <%= link_to '買い物を続ける', root_path, class:"btn btn-primary" %>
-          </div>
+              <%= link_to '買い物を続ける', root_path, class:"btn btn-primary" %>
+            </div>
               <!-- 情報入力に進む〇 -->
             <div>
-            <%= link_to '情報入力に進む', orders_new_path, class:"btn btn-success" %>
-          </div>
+              <%= link_to '情報入力に進む', new_order_path, class:"btn btn-success" %>
+            </div>
           
         </div>
       </div>

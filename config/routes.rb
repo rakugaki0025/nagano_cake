@@ -60,36 +60,38 @@ Rails.application.routes.draw do
       ## カート内商品全データ削除(全て)
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
     delete 'cart_items/destroy_all' => "cart_items#destroy_all", as: 'cart_items_destroy_all'
-    
+      
+      ## index   : カート内商品一覧画面(数量・カート削除)
+      ## create  : カート内商品データ追加
+      ## update  : カート内商品データ更新
+      ## destroy : カート内商品データ削除(一商品)
       ## cart_itemsディレクトリ ルーティング自動生成 onlyで(限定生成)
-      ## resources :cart_items, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :cart_items, only: [:index, :edit, :create, :update, :destroy]
-    
+      
 ### public_orders
+      
+      ## new    : 注文情報入力画面(支払い方法)
+      ## index  : 注文履歴一覧画面
+      ## show   : 注文履歴詳細画面
+      ## create : 注文情報確定
+      ## ordersディレクトリ ルーティング自動生成 onlyで(限定生成)
+      ## resources :orders, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create ] do
     
-      ## 注文情報入力画面(支払い方法)
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    get 'orders/new' => "orders#new", as: 'orders_new'
-    
+    collection do
+      get :thanks
+      
+      post :confirm
+      
+    end
+  end
       ## 注文情報確認画面
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    post 'orders/confirm' => "orders#confirm", as: 'orders_confirm'
-    
+    #post 'orders/confirm' => "orders#confirm", as: 'orders_confirm'
+      
       ## 注文完了画面(サンクスページ)
       ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    get 'orders/thanks' => "orders#thanks", as: 'orders_thanks'
-    
-      ## 注文情報確定
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    post 'orders' => "orders#create", as: 'orders_create'
-    
-      ## 注文履歴一覧画面
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    get 'orders' => "orders#index", as: 'orders_index'
-    
-      ## 注文履歴詳細画面
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    get 'orders/:id' => "orders#show", as: 'orders_show'
+    #get 'orders/thanks' => "orders#thanks", as: 'orders_thanks'
     
   end
   

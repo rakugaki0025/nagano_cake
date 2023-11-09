@@ -22,7 +22,7 @@ class Public::CartItemsController < ApplicationController
         ## レコードを一つ取得？
     @cart_item = CartItem.find(params[:id])
               
-        ## ユーザー情報 アップデート
+        ## カート内情報を更新
     if  @cart_item.update(cart_item_params)
               
         ## flash[:notice] は 投稿が成功した時だけ表示

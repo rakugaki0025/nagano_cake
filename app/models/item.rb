@@ -28,10 +28,11 @@ class Item < ApplicationRecord
       #favorites.exists?(user_id: user.id)
   # end
   
-  
+  has_many :order_items, dependent: :destroy
   has_many :cart_items, dependent: :destroy
         ## ユーザーに:～属する 1:N の関係 [1] 側 送信
         ## item は cart_items に 対して 1:多 の関係である
+        ## item は order_items に 対して 1:多 の関係である
         ## 削除機能
         ## たくさん持っている:モデルが 1:N になるよう関連付け:削除
   

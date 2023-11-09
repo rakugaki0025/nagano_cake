@@ -7,11 +7,12 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   
+  has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-          ## ユーザーに:～属する 1:N の関係 [1] 側 送信
-          ## customer は cart_items に 対して 1:多 の関係である
-          ## 削除機能
-          ## たくさん持っている:モデルが 1:N になるよう関連付け:削除
-          
-  
+    ## ユーザーに:～属する 1:N の関係 [1] 側 送信
+    ## customer は cart_items に 対して 1:多 の関係である
+    ## 削除機能
+    ## たくさん持っている:モデルが 1:N になるよう関連付け:削除
+    
 end
+
