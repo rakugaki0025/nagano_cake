@@ -198,7 +198,6 @@ ja:                   ## 日本語の設定を行う
     pm: 午後
 
 
-ja:
   activerecord:
     attributes:
       user:

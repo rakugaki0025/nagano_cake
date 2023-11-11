@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-      @order.payment_method = current_customer.id
+        #@order.payment_method = current_customer.id
         # @order.billing_amount = current_customer.id
       @order.postage = 800
         # @order.created_at = current_customer.created_at
@@ -70,7 +70,7 @@ class Public::OrdersController < ApplicationController
         # end
   end
   
-    ## 注文確定処理 orders_create_path
+          ## 注文確定処理 orders_create_path
   def create
       
           ## name, introduction, price, image 格納
@@ -82,7 +82,9 @@ class Public::OrdersController < ApplicationController
         @cart_items = current_customer.cart_items
         
         @cart_items.each do |cart_item|
+          ## 空箱用意
         @order_item = OrderItem.new
+          ## 各箱に必要なデータを入れていく
         @order_item.order_id = @order.id
         @order_item.item_id = cart_item.item.id
         @order_item.tax_included_price = cart_item.item.price
@@ -106,12 +108,12 @@ class Public::OrdersController < ApplicationController
       
   end
   
-    ## 注文完了画面 thanks_orders_path
+        ## 注文完了画面 thanks_orders_path
   def thanks
   
   end
   
-    ## 注文履歴一覧画面 orders_path
+        ## 注文履歴一覧画面 orders_path
   def index
     
         ## order,内に含まれるorder_itemsを呼び出す記述
@@ -119,13 +121,11 @@ class Public::OrdersController < ApplicationController
       
   end
   
-    ## 注文履歴詳細画面 order_path
+        ## 注文履歴詳細画面 order_path
   def show
-      
+    
         ## order,内に含まれるorder_itemsを呼び出す記述
-      # @orders = Order.includes(:order_items)
-      
-      @orders = current_customer.orders
+      @order = current_customer.orders.find(params[:id])
       
   end
   
