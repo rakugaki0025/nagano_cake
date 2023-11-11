@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => "cart_items#destroy_all", as: 'cart_items_destroy_all'
       
       ## index   : カート内商品一覧画面(数量・カート削除)
+      ## edit    : 
       ## create  : カート内商品データ追加
       ## update  : カート内商品データ更新
       ## destroy : カート内商品データ削除(一商品)
@@ -76,24 +77,23 @@ Rails.application.routes.draw do
       ## create : 注文情報確定
       ## ordersディレクトリ ルーティング自動生成 onlyで(限定生成)
       ## resources :orders, only: [:new, :index, :show, :create, :edit, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create ] do
-    
-    collection do
-      get :thanks
+    resources :orders, only: [:new, :index, :show, :create, :destroy ] do
       
+      ## 各ルーティングをできるだけ問題なく遷移するには便利
+    collection do
+        
+        ## 注文情報確認画面
       post :confirm
+      
+        ## 注文完了画面(サンクスページ)
+      get :thanks
       
     end
   end
-      ## 注文情報確認画面
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    #post 'orders/confirm' => "orders#confirm", as: 'orders_confirm'
-      
-      ## 注文完了画面(サンクスページ)
-      ## 取得 '実際の表示アドレス' => "指定のコントローラー#アクション", as: "名前つきルート"
-    #get 'orders/thanks' => "orders#thanks", as: 'orders_thanks'
-    
+  
+  
   end
+  
   
   
    # namespaceでは /admin が表示される 例 /admin/homes

@@ -24,12 +24,62 @@
         
         
         <h3>新着商品</h3>
-        
-        商品名01
-        商品名02
-        商品名03
-        商品名04
-        
+            <!-- 商品一覧表示 -->
+          <table border="1" align="left" width="300" height="130">
+            
+          <% @items.each do |item| %>
+              <tbody>
+                    <!-- 商品画像,商品名,アイテム価格 -->
+                <td align="center" valign="bottom">
+                  <%= image_tag item.get_image, size: "130x90" %>
+
+                  <%= link_to item_path(item.id) do %>
+                    <%= item.name %>
+                  <% end %>
+                
+                  <%= item.price %>
+                </td>
+                
+              </tbody>
+                
+            
+          <% end %>
+           
+           </table>
+           
+           
+           <table border="1" align="left" width="300" height="130">
+             <tr align="right">
+               <td>右側</td><td valign="top">右上</td>
+               </tr>
+               <tr>
+               <td valign="top">左上</td><td align="right">右側</td>
+             </tr>
+           </table>
+           
+           
+           <table border="1" align="center" width="300" height="130">
+             <tr align="center">
+               <td>中央</td><td valign="top">中央上</td>
+               </tr>
+               <tr>
+               <td valign="middle">真中</td><td valign="bottom">左下</td>
+             </tr>
+           </table>
+           
+           
+           
+           <table border="1" align="right" width="300" height="130">
+             <tr valign="bottom">
+               <td>左下</td><td align="right">右下</td>
+                </tr>
+                <tr>
+                <td align="right">右側</td>
+                <td align="center" valign="bottom">中央下</td>
+             </tr>
+           </table>
+           
+           
         <br>
         
         <%= link_to "全ての商品を見る", items_path %>

@@ -66,18 +66,16 @@
                     <%= @customer.email %>
                   </td>
               </tr>
-                <!-- -->
+              
             </tbody>
             
         </table>
         
             <!-- 注文履歴一覧 △ -->
         <strong>
-            注文履歴
-              <% if @customer == current_customer %>
-                <%= link_to "一覧を見る", confirm_path, class:"btn btn-primary" %>
-              <% end %> 
-          </strong>
+          注文履歴
+            <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
+        </strong>
         
       </div>
     </div>

@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   ##nagano_controllers_public_cart_items
     
     
-    ## 注文情報入力画面 orders_new_path
+    ## 注文情報入力画面 new_order_path
   def new
       
         ## 
@@ -19,32 +19,32 @@ class Public::OrdersController < ApplicationController
       
   end
   
-           ## 注文情報確認画面 orders_conrirm_path
+           ## 注文情報確認画面 conrirm_orders_path
   def confirm
            
            ## orderの中のaddress_optionのデータを受信している
-      #@test = params[:order][:address_option]
+      # @test = params[:order][:address_option]
            
            ## form_with から送られるデータを受信するための記述
            ## Order.new(order_params)の受信内容が何かを覚えさせるために代入
       @order = Order.new(order_params)
-           
+        
            ## ご自身の住所を選択した場合
            ## 各paramsが受け取れるようになった
            ## 各paramsに必要なデータを渡してあげる
-        #if #@test == "0"
+        # if #@test == "0"
            #p "000000"
            #p @order
-        #@order.id = current_customer.id
+        # @order.id = current_customer.id
       @order.customer_id = current_customer.id
       @order.post_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
       @order.payment_method = current_customer.id
-        #@order.billing_amount = current_customer.id
+        # @order.billing_amount = current_customer.id
       @order.postage = 800
-        #@order.created_at = current_customer.created_at
-        #@order.updated_at = current_customer.updated_at
+        # @order.created_at = current_customer.created_at
+        # @order.updated_at = current_customer.updated_at
        p "000000"
        p @order
       
@@ -60,14 +60,14 @@ class Public::OrdersController < ApplicationController
       # @order_item = Order.find(order_params)
            
            ## 登録済みを選択されて場合
-        #elsif @test == "1"
+        # elsif @test == "1"
            #p "111111"
            
-           ## 
-        #else @test == "2"
+           ## 新規東麓の場合
+        # else @test == "2"
            #p "222222"
            
-        #end
+        # end
   end
   
     ## 注文確定処理 orders_create_path
@@ -78,7 +78,21 @@ class Public::OrdersController < ApplicationController
         
           ## 記録保存が成功すれば注文完了画面へ
      if @order.save
-       
+        
+        @cart_items = current_customer.cart_items
+        
+        @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart_item.item.id
+        @order_item.tax_included_price = cart_item.item.price
+        @order_item.quantity = cart_item.quantity
+        #@order_item.manufacture_status = 0
+        @order_item.save!
+        
+        end
+        
+        
           ## 記録保存が成功すればカート内商品を全削除
         current_customer.cart_items.destroy_all
           
@@ -92,36 +106,42 @@ class Public::OrdersController < ApplicationController
       
   end
   
-    ## 注文完了画面 orders_thanks_path
+    ## 注文完了画面 thanks_orders_path
   def thanks
   
   end
   
-    ## 注文履歴画面 orders_index_path
+    ## 注文履歴一覧画面 orders_path
   def index
+    
+        ## order,内に含まれるorder_itemsを呼び出す記述
+      @orders = current_customer.orders
       
-        ## 
-      # @order = Order.new
-      
-        ## 全注文データ取得
-      # @orders = Order.all # or 他のクエリで適切な値を取得する
-      
-      
-      ## 全注文データ取得
-     # @orders = Order.all
-     
-     #if # @orders.nil? # もし注文データが存在しない場合
-        
-        # @orders = [] # 空の配列を代入することでnilエラーを回避
-        
-     #end
-     
   end
   
-    ## 注文履歴詳細画面 orders_show_path
+    ## 注文履歴詳細画面 order_path
   def show
-  
+      
+        ## order,内に含まれるorder_itemsを呼び出す記述
+      # @orders = Order.includes(:order_items)
+      
+      @orders = current_customer.orders
+      
   end
+  
+  #   ## カート内商品データ削除(一商品) cart_items_destroy
+  # def destroy
+    
+  #       ## データ(レコード)を一件取得
+  #     @cart_item = CartItem.find(params[:id])
+        
+  #       ## データ（レコード）を削除
+  #     @cart_item.destroy
+      
+  #       ## カート内商品一覧画面へリダイレクト
+  #     redirect_to '/cart_items'
+        
+  # end
   
   
   private
