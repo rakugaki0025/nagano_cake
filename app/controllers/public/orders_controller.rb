@@ -87,7 +87,7 @@ class Public::OrdersController < ApplicationController
           ## 各箱に必要なデータを入れていく
         @order_item.order_id = @order.id
         @order_item.item_id = cart_item.item.id
-        @order_item.tax_included_price = cart_item.item.price
+        @order_item.tax_included_price = cart_item.item.price * 1.1
         @order_item.quantity = cart_item.quantity
         #@order_item.manufacture_status = 0
         @order_item.save!
@@ -126,6 +126,20 @@ class Public::OrdersController < ApplicationController
     
         ## order,内に含まれるorder_itemsを呼び出す記述
       @order = current_customer.orders.find(params[:id])
+      
+        ## 計算を始める
+      @sum = 0
+      
+        ## 注文全体を呼び出す
+      @order.order_items.each do |order_item|
+        
+        ## さらに order_item から [.カラム] で 必要なカラムを呼び出す
+      @sum += order_item.tax_included_price * order_item.quantity
+      
+        
+      
+      end
+      
       
   end
   

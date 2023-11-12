@@ -10,7 +10,7 @@
       <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
       
         <h3>注文情報確認画面</h3>
-                  <!-- 注文情報確認画面 -->
+            <!-- 注文情報確認画面 -->
           <table>
                   <!-- 商品名,単価,数量,小計,送料,商品合計,請求金額△ -->
             <thead>
@@ -65,7 +65,8 @@
               <% end %>
             </tbody>
           </table>
-                  <!-- 送料,商品合計,請求金額 -->
+          
+            <!-- 送料,商品合計,請求金額 -->
           <table>
                   <!-- 送料,商品合計,請求金額,表示 -->
             <thead>
@@ -83,7 +84,7 @@
               <tr align="center">
                   <!-- 送料,800 -->
               <td>
-                800 
+                800
               </td>
                   <!-- 商品合計金額 -->
               <td>
@@ -94,9 +95,10 @@
                 請求合計金額 <%= @sum + @order.postage %>
               </td>
               </tr>
-                  <!-- 注文を確定する△  -->
+                  <!-- 注文を確定する,create〇 -->
               <td>
                 <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+                    <!-- hidden_field 情報を隠しつつ送信できる機能 -->
                   <%= f.hidden_field :customer_id, :value => @order.customer_id %>
                   <%= f.hidden_field :post_code, :value => @order.post_code %>
                   <%= f.hidden_field :address, :value => @order.address %>

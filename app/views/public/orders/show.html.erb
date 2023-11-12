@@ -10,24 +10,27 @@
         
         <h3>注文履歴詳細画面</h3>
         
-        <!-- 注文履歴詳細画面 -->
+          <!-- 注文情報 = 注文日,配送先,支払方法 -->
         <table>
             <!-- 注文日,配送先,注文商品,支払金額 -->
           <thead>
             <tr>
               <th>注文日</th>
               <th>配送先</th>
-              <th></th>
               <th>支払方法</th>
             </tr>
           </thead>
           
           <tbody>
               <tr>
-                <td><%= @order.created_at %></td>
                 <td>
-                  <%= @order.post_code %>
-                  <%= @order.address %>
+                  <%= @order.created_at %>
+                </td>
+                
+                <td>
+                  <%= @order.post_code %><br />
+                  <%= @order.address %><br />
+                  <%= @order.name %>
                 </td>
                   <!-- 支払方法,日本語化表記済〇 -->
                 <td>
@@ -38,7 +41,73 @@
               
           </tbody>
         </table>
- 
+        
+          <!-- 請求情報 = 商品合計,配送料,ご請求額 -->
+        <table>
+            <!-- 商品合計,配送料,ご請求額 -->
+          <thead>
+            <tr>
+              <th>商品合計</th>
+              <th>配送料金</th>
+              <th>ご請求額</th>
+            </tr>
+          </thead>
+            <!-- 商品合計,配送料,ご請求額 -->
+          <tbody>
+            <tr>
+                <!-- 商品合計△ -->
+              <td>
+                <%= @sum %>
+              </td>
+                <!-- 配送料〇 -->
+              <td>
+                <%= @order.postage %>
+              </td>
+                <!-- ご請求額〇 -->
+              <td>
+                <%= @order.billing_amount %>
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+        
+          <!-- 注文内容 -->
+        <table>
+          <!-- 商品,単価(税込),個数,小計 -->
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+              
+              <td>
+                <% @order.order_items.each do |order_item| %>
+                  
+                  <%= order_item.item.name %>
+                  
+                  <%= order_item.tax_included_price %>
+                  
+                  <%= order_item.quantity %>
+                  
+                  <%= order_item.tax_included_price * order_item.quantity %>
+                  
+                <% end %>
+              </td>
+              <td>
+                
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+        
         </div>
       </div>
     </div>
