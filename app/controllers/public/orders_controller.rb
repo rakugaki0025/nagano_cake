@@ -143,20 +143,6 @@ class Public::OrdersController < ApplicationController
       
   end
   
-  #   ## カート内商品データ削除(一商品) cart_items_destroy
-  # def destroy
-    
-  #       ## データ(レコード)を一件取得
-  #     @cart_item = CartItem.find(params[:id])
-        
-  #       ## データ（レコード）を削除
-  #     @cart_item.destroy
-      
-  #       ## カート内商品一覧画面へリダイレクト
-  #     redirect_to '/cart_items'
-        
-  # end
-  
   
   private
   

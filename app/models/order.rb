@@ -18,13 +18,5 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
   
   
-    ## 注文履歴一覧削除機能
-  def self.delete_all_history
-      
-      self.destroy_all
-      
-  end
-  
-  
 end
 

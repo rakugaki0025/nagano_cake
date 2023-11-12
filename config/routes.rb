@@ -79,6 +79,7 @@ Rails.application.routes.draw do
       ## resources :orders, only: [:new, :index, :show, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create, :destroy ] do
       
+      
       ## 各ルーティングをできるだけ問題なく遷移するには便利
     collection do
         
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
       get :thanks
       
     end
+    
   end
   
   
