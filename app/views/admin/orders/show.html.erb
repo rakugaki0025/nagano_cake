@@ -6,38 +6,121 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        <div class="mx-auto auto col-11">
         
         <h3>注文詳細画面</h3>
         
-        <% @order.each do |order| %>
-                <!-- 商品一覧表示 -->
-            <table>
-                  <!-- 商品ID,商品名,価格_投稿内容 -->
-              <tbody>
-                <tr align="center">
-                    <!-- 商品画像 -->
-                  <td>
-                    <%= image_tag cart_item.get_image, size: "360x300" %>
-                  </td>
-                  <th></th>
-                    <!-- 商品名 -->
-                  <td>
-                    <%= link_to item_path(item.id) do %>
-                      <%= item.name %>
-                    <% end %>
-                  </td>
-                  <td></td>
-                    <!-- アイテム価格 -->
-                  <td>
-                    <%= item.price %>
-                  </td>
-                    
-                </tr>
-              </tbody>
+          <!-- 購入日時,購入者,注文個数 -->
+        <table border="1" width="800"  height="50">
+            <!-- 購入日時,購入者,注文個数〇 -->
+          <thead>
+            <tr align=”center”>
+              <th>購入者</th>
+              <th>注文日</th>
+              <th>配送先</th>
+              <th>支払方法</th>
+            </tr>
+          </thead>
+          
+            <!-- 商品一覧表示〇 -->
+          <tbody>
+                <!-- 商品ID,商品名,価格_投稿内容〇 -->
+            <tr align="left">
+                <!-- 購入者〇 -->
+              <td>
+                <%= link_to admin_orders_show_path(@order.id) do %>
+                  <%= @order.customer.full_name %>
+                <% end %>
+              </td>
+                <!-- 注文日〇 -->
+              <td>
+                <%= @order.created_at %>
+              </td>
+                <!-- 配送先〇 -->
+              <td>
+                <%= @order.post_code %>
+                <%= @order.address %>
+                <br />
+                <%= @order.customer.full_name %>
+              </td>
+                <!-- 支払方法,日本語化〇 -->
+              <td>
+                <%= @order.payment_method_i18n %>
+              </td>
+              
+            </tr>
+          </tbody>
+          
+        </table>
+        
+          <!-- 商品,単価(税込),個数,小計 -->
+        <table border="1" width="600"  height="50">
+            <!-- 商品,単価(税込),個数,小計 -->
+          <thead>
+            <tr>
+              <th>商品</th>
+              <th>単価(税込)</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+            <!-- 商品,単価(税込),個数,小計 -->
+          <tbody>
+            <% @order.order_items.each do |order_item| %>
+              <tr>
+                  <!-- 商品 -->   
+                <td>
+                  <%= order_item.item.name %>
+                </td>
+                  <!-- 単価(税込) -->
+                <td>
+                  <%= order_item.tax_included_price %>
+                </td>
+                  <!-- 個数 -->
+                <td>
+                  <%= order_item.quantity %>
+                </td>
+                  <!-- 小計 -->
+                <td>
+                  <%= order_item.tax_included_price * order_item.quantity %>
+                </td>
+                     
+              </tr>
+            <% end %>
                 
-            </table>
-          <% end %>
+          </tbody>
+          
+        </table>
+        
+          <!-- 請求情報 = 商品合計,送料,請求金額合計 -->
+        <table border="1" width="600"  height="50">
+            <!-- 商品合計,送料,請求金額合計 -->
+          <thead>
+            <tr>
+              <th>商品合計</th>
+              <th>送料</th>
+              <th>請求金額合計</th>
+            </tr>
+          </thead>
+            <!-- 商品合計,送料,請求金額合計 -->
+          <tbody>
+            <tr>
+                <!-- 商品合計〇 -->
+              <td>
+                <%= @sum %>
+              </td>
+                <!-- 配送料〇 -->
+              <td>
+                <%= @order.postage %>
+              </td>
+                <!-- ご請求額〇 -->
+              <td>
+                <%= @order.billing_amount %>
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
         
         </div>
       </div>

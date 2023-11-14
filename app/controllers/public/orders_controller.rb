@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  ##nagano_controllers_public_cart_items
+  ##nagano_controllers_public_orders
     
     
     ## 注文情報入力画面 new_order_path
@@ -136,7 +136,6 @@ class Public::OrdersController < ApplicationController
         ## さらに order_item から [.カラム] で 必要なカラムを呼び出す
       @sum += order_item.tax_included_price * order_item.quantity
       
-        
       
       end
       
@@ -155,4 +154,6 @@ class Public::OrdersController < ApplicationController
       params.require(:order).permit(:customer_id, :post_code, :address, :name, :payment_method, :billing_amount, :postage )
   end
   
+  
 end
+

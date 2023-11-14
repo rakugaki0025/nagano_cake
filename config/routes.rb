@@ -80,7 +80,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :show, :create, :destroy ] do
       
       
-      ## 各ルーティングをできるだけ問題なく遷移するには便利
+        ## 各ルーティングをできるだけ問題なく遷移するには便利
     collection do
         
         ## 注文情報確認画面

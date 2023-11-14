@@ -13,6 +13,15 @@ class Customer < ApplicationRecord
     ## customer は cart_items に 対して 1:多 の関係である
     ## 削除機能
     ## たくさん持っている:モデルが 1:N になるよう関連付け:削除
-    
+  
+  
+    ## full_name を定義することによって last,first を簡略化
+  def full_name
+      
+      last_name + " " + first_name
+      
+  end
+  
+  
 end
 
