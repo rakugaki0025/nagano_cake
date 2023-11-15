@@ -8,41 +8,49 @@
     
     <div class="container">
       <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-9">
           
           <h1>商品一覧</h1>
           
           <h6>(全X件)</h6>
           
-          <% @items.each do |item| %>
-                <!-- 商品一覧表示 -->
-            <table>
-                  <!-- 商品ID,商品名,価格_投稿内容 -->
-              <tbody>
-                <tr align="center">
-                    <!-- 商品画像 -->
-                  <td>
-                    <%= image_tag item.get_image, size: "360x300" %>
-                  </td>
-                  <th></th>
-                    <!-- 商品名 -->
-                  <td>
-                    <%= link_to item_path(item.id) do %>
-                      <%= item.name %>
-                    <% end %>
-                  </td>
-                  <td></td>
-                    <!-- アイテム価格 -->
-                  <td>
-                    <%= item.price %>
-                  </td>
-                    
-                </tr>
-              </tbody>
+            <!-- 商品一覧表示,displayflex -->
+            <!-- "." = class , #.example = id="example" , 全体 tr{...} -->
+          <style>
+            .example{
+             display: flex;
+             align-items: flex-start;
+             flex-wrap: wrap;
+            }
+          </style>
+          
+            <!-- 商品一覧表示〇 -->
+          <table border="1" width="772" height="130">
+            <!-- 商品画像,商品名,アイテム価格 -->
+          <tbody>
+            <tr class="example">
+              <% @items.each do |item| %>
+              
+              <td>
+                  <!-- 商品画像〇 -->
+                <%= image_tag item.get_image, size: "150x100" %>
+                  
+                  <!-- 商品名〇 --><br />
+                <%= link_to item_path(item.id) do %>
+                  <%= item.name %>
+                <% end %>
                 
-            </table>
-          <% end %>
-        
+                  <!-- アイテム価格〇 --><br />
+                ￥<%= number_with_delimiter(item.price, delimiter: ',') %>
+                
+              </td>
+              
+              <% end %>
+            </tr>
+          </tbody>
+          
+          </table>
+          
         </div>
       </div>
     </div>

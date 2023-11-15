@@ -28,7 +28,7 @@ class Admin::ItemsController < ApplicationController
      if @item.save
           
           ## 遷移先 商品投稿一覧画面
-        redirect_to admin_items_path
+        redirect_to admin_show_path(@item.id)
           
      else ## 保存できなかった場合, :画像投稿フォーム再表示
         render :new

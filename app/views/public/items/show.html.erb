@@ -14,40 +14,37 @@
           <!-- 商品詳細,価格 -->
         <table>
           <tbody>
-            <tr align="center">
-                <!-- 商品画像△ -->
-              <tr align="center">
+            <tr>
+                <!-- 商品画像〇 -->
+              <tr>
                 <%= image_tag @item.get_image, size: "360x300" %>
               </tr><br />
-                <!-- 商品名△ -->
-              <tr align="center">
-                <%= @item.name %>
-              </tr><br />
-                <!-- 商品説明△ -->
-              <tr align="center">
-                <%= @item.introduction %>
-              </tr><br />
-                <!-- 商品価格△ -->
-              <tr align="center">
+                <!-- 商品名,商品説明〇 -->
+              <tr>
+                <%= @item.name %><br />
+                <%= @item.introduction %><br />
+              </tr>
+                <!-- 商品価格〇 -->
+              <tr>
                   ￥
-                <%= @item.with_tax_price %>
+                <%= number_with_delimiter(@item.price, delimiter: ',') %>
                   (税込み)
               </tr><br />
                 <!-- 商品個数,カート△ -->
-              <tr align="center">
+              <td>
                 <%= form_with model: CartItem.new do |f| %>
                 
-                      <!-- 商品個数 -->
-                    <%= f.select :quantity, *[1..10], {prompt: '個数選択' } %>
-                      <!-- カートに送るデータ -->
-                        <!-- f.hidden_field :商品個数(カラム), :value => @商品データ.id -->
-                    <%= f.hidden_field :item_id, :value => @item.id %>
-                      <!-- チェックボックス -->
-                    <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+                    <!-- 商品個数 -->
+                  <%= f.select :quantity, *[1..10], {prompt: '個数選択' } %>
+                    <!-- カートに送るデータ -->
+                    <!-- f.hidden_field :商品個数(カラム), :value => @商品データ.id -->
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                    <!-- チェックボックス -->
+                  <%= f.submit 'カートに入れる', class:"btn btn-success" %>
                 
                 <% end %>
                 
-              </tr>
+              </td>
             </tr>
             
           </tbody>

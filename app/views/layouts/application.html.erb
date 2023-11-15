@@ -28,6 +28,7 @@
           <ul class="navbar-nav ml-auto">
               <!-- admin,customer/ログイン,ログアウト -->
             <div class="row">
+              
                   <!-- customer_ログイン〇 -->
               <% if customer_signed_in? %>
                 <ul class="navbar-nav ml-auto">
@@ -88,6 +89,7 @@
                       <%= link_to "ログイン", new_customer_session_path, class: "nav-link text-light" %>
                     </li>
                   </ul>
+                  
               <% end %>
               
             </div>

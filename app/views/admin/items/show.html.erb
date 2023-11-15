@@ -11,44 +11,41 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="mx-auto auto">
-          
+        <div class="mx-auto auto col-11">
+            <!-- 商品画像,商品名,商品説明,税込価格 -->
           <table>
+            
             <tbody>
-                <!-- 商品画像_(別型表示記載) -->
-              <tr align="left">
+                <!-- 商品画像_(別型表示記載)〇 -->
+              <td>
                 <%= image_tag @item.get_image, size: "360x300" %>
                 <!--%= image_tag @item.get_image %-->
-              </tr><br />
-                <!-- 商品名 -->
-              <tr align="right">
-                  <label for="name">
-                    商品名
-                  </label>
-                    <%= @item.name %>
-                </tr><br />
-                <!-- 商品説明 -->
-              <tr align="right">
-                  <label for="introduction">
-                    商品説明
-                  </label>
-                    <%= @item.introduction %>
-                </tr><br />
-                <!-- 税込価格(税抜価格) -->
-              <tr align="right">
-                  <label for="price">
-                    価格
-                  </label>
-                    <%= @item.price %>
-                </tr><br />
-                <!-- 編集する -->
-              <tr align="right">
-                    <%= link_to "編集する", admin_edit_path, class:"btn btn-success" %>
-                </tr>
+              </td>
+                <!-- 商品名,商品説明,税込価格 -->  
+              <td>
+                  <!-- 商品名〇 -->
+                <label for="name">商品名</label>
+                  <%= @item.name %>
+                <br />
+                  <!-- 商品説明〇 -->
+                <label for="introduction">商品説明</label>
+                  <%= @item.introduction %>
+                <br />
+                  <!-- 税込価格(税抜価格),カンマ表示〇 -->
+                <label for="price">税込価格(税抜価格)</label>
+                  <%= number_with_delimiter(@item.with_tax_price, delimiter: ',') %>円
+                  (<%= number_with_delimiter(@item.price, delimiter: ',') %>)円
+              </td>
+              
             </tbody>
+            
           </table>
           
         </div>
+            <!-- 編集する -->
+          <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+            <%= link_to "編集する", admin_edit_path, class:"btn btn-success" %>
+          </div>
       </div>
     </div>
   </main>

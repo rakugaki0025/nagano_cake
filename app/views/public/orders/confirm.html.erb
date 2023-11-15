@@ -7,81 +7,69 @@
   
   <div class="container">
     <div class="row">
-      <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+      <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-9">
       
         <h3>注文情報確認画面</h3>
-            <!-- 注文情報確認画面 -->
-          <table>
+            <!-- 注文情報確認画面〇 -->
+          <table border="1" width="600"  height="50">
                   <!-- 商品名,単価,数量,小計,送料,商品合計,請求金額△ -->
             <thead>
-              <tr align=”center”>
-                  
+              <tr>
                 <th>商品名</th>
-                <th></th>
                 <th>単価(税込み)</th>
-                
                 <th>数量</th>
                 <th>小計</th>
-                
-                <th colspan="3"></th>
               </tr>
             </thead>
                   <!-- 合計金額を出すために o 円を設定? -->
               <% @sum = 0 %>
                   <!-- 商品画像,商品名,価格,個数,小計,合計 -->
             <tbody>
-              <% @cart_items.each do |cart_item| %>
                   <!-- 商品一覧表示△ -->
-                <tr align="center">
-                    <!-- 商品画像〇 -->
-                  <td>
-                    <%= image_tag cart_item.item.get_image, size: "100x70" %>
-                  </td>
-                    <!-- 商品名〇 -->
-                  <td>
-                      <!-- cart_item.送信データ.name -->
-                    <%= cart_item.item.name %>
-                  </td>
-                    <!-- 単価(税込),価格〇 -->
-                  <td>
+              <% @cart_items.each do |cart_item| %>
+                <tr align="left">
+                  <!-- 商品画像,商品名〇 -->
+                <td>
+                  <%= image_tag cart_item.item.get_image, size: "100x70" %>
+                    <!-- cart_item.送信データ.name -->
+                  <%= cart_item.item.name %>
+                </td>
+                  <!-- 単価(税込),価格〇 -->
+                <td>
                     <%= cart_item.item.with_tax_price %>
-                  </td>
-                    <!-- 数量の個数〇 -->
-                  <td>
+                </td>
+                  <!-- 数量の個数〇 -->
+                <td>
                     <%= cart_item.quantity %>
-                  </td>
-                    <!-- 商品の単一小計価格〇 -->
-                  <td>
-                      <!-- 商品単一合計価格 -->
-                    <%= cart_item.subtotal %>
-                  </td>
+                </td>
+                  <!-- 商品の単一小計価格〇 -->
+                <td>
+                    <!-- 商品単一合計価格 -->
+                  <%= cart_item.subtotal %>
+                </td>
                     <!-- 商品の合計価格算出場所〇  -->
-                      <!-- 全ての単一商品の合計値を出すために記述しておく,無いと合計が出ない -->
-                  <td>
-                    <% @sum += cart_item.subtotal %>
-                  </td>
-                  
+                    <!-- 全ての単一商品の合計値を出すために記述しておく,無いと合計が出ない -->
+                  <% @sum += cart_item.subtotal %>
                 </tr>
               <% end %>
+              
             </tbody>
+            
           </table>
           
-            <!-- 送料,商品合計,請求金額 -->
-          <table>
-                  <!-- 送料,商品合計,請求金額,表示 -->
+            <!-- 送料,商品合計,請求金額〇 -->
+          <table border="1" width="600"  height="50">
+              <!-- 送料,商品合計,請求金額,表示 -->
             <thead>
-              <tr align=”center”>
-                
+              <tr>
                 <th>送料</th>
                 <th>商品合計</th>
                 <th>請求金額</th>
-                      
-                <th colspan="3"></th>
               </tr>
             </thead>
                   <!-- 送料,商品合計,請求金額 -->
             <tbody>
-              <tr align="center">
+              <tr align="left">
                   <!-- 送料,800 -->
               <td>
                 800
@@ -95,25 +83,43 @@
                 請求合計金額 <%= @sum + @order.postage %>
               </td>
               </tr>
-                  <!-- 注文を確定する,create〇 -->
-              <td>
-                <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-                    <!-- hidden_field 情報を隠しつつ送信できる機能 -->
-                  <%= f.hidden_field :customer_id, :value => @order.customer_id %>
-                  <%= f.hidden_field :post_code, :value => @order.post_code %>
-                  <%= f.hidden_field :address, :value => @order.address %>
-                  <%= f.hidden_field :name, :value => @order.name %>
-                  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-                  <%= f.hidden_field :postage, :value => @order.postage %>
-                  <%= f.hidden_field :billing_amount, :value => @sum + @order.postage %>
-                  <%= f.submit '注文を確定する', class:"btn btn-success" %>
-                <% end %>
-              </td>
             
             </tbody>
             
           </table>    
-      
+            <!-- 支払方法,お届け先〇 -->
+          <table>
+              <!-- 支払方法 -->
+            <div>
+              <label for="name">支払方法</label>
+              
+              <%= @order.payment_method_i18n %><br />
+            </div>
+              <!-- お届け先 -->
+            <div>
+              <label for="name">お届け先</label>
+                <%= @order.post_code %>
+                <%= @order.address %>
+                <%= @order.name %>  
+            </div>
+              
+          </table>
+          
+            <!-- 注文を確定する,create〇 -->
+          <div>
+            <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+                <!-- hidden_field 情報を隠しつつ送信できる機能 -->
+              <%= f.hidden_field :customer_id, :value => @order.customer_id %>
+              <%= f.hidden_field :post_code, :value => @order.post_code %>
+              <%= f.hidden_field :address, :value => @order.address %>
+              <%= f.hidden_field :name, :value => @order.name %>
+              <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+              <%= f.hidden_field :postage, :value => @order.postage %>
+              <%= f.hidden_field :billing_amount, :value => @sum + @order.postage %>
+              <%= f.submit '注文を確定する', class:"btn btn-success" %>
+            <% end %>
+          </div>
+          
       </div>
     </div>
   </div>

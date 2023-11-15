@@ -4,7 +4,7 @@ class Admin::HomesController < ApplicationController
     ## 注文履歴一覧
   def top
         
-        ## 
+        ## 全ての order を呼び出す
       @order = Order.all
       
   end

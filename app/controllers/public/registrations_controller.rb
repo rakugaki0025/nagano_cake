@@ -75,11 +75,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
           ## /homes, top画面に遷移したい
           ## ここでのresource はログイン,ログアウト時でしか使われない
           ## root_pathにしないとひっかかるかも…？
-      root_path
+      customers_my_page_path
           
           
   end
   
+    ## ログアウト後に遷移する場所
+  def after_sign_out_path_for(resource)
+          
+          ## public, root_to = homes/topに遷移
+      root_path
+          
+          
+  end
   
   
   protected
