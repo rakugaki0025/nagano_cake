@@ -28,7 +28,6 @@
           <ul class="navbar-nav ml-auto">
               <!-- admin,customer/ログイン,ログアウト -->
             <div class="row">
-              
                   <!-- customer_ログイン〇 -->
               <% if customer_signed_in? %>
                 <ul class="navbar-nav ml-auto">
@@ -99,7 +98,15 @@
       </nav>
     </header>
     
-    <%= yield %>
+      <!-- main上部にmarginを適応 -->
+    <main style="margin-top: 50px;">
+      <div class="container">
+          <!-- bodyがここに入る -->
+        <%= yield %>
+        
+      </div>
+    </main>
+    
   </body>
 </html>
 

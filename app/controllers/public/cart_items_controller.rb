@@ -102,6 +102,7 @@ class Public::CartItemsController < ApplicationController
        redirect_to cart_items_path
          
     end
+    
   end
   
   

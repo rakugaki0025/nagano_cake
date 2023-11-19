@@ -1,99 +1,112 @@
 <!-- nagano_view_admin_customers_show_top -->
- 
-<h1>admin_Customers_show_顧客画面</h1>
-  
+
+
   <!-- フラッシュメッセージ投稿成功時 -->
   <div>
     <%= flash[:notice] %>
   </div>
-  
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+        <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:350px;
+        height:35px;
+       }
+      </style>
+      
+        <!-- 会員詳細 -->
+      <th>
+        <h4 class="example" align="center">
+          <%= @customer.last_name %>
+          <%= @customer.first_name %>
+          さんの会員詳細
+        </h4>
+      </th>
+      
+        <!-- 会員情報詳細 -->
+      <table width="550"  height="350">
           
-        <h3>会員詳細</h3>
-            <!-- 会員情報詳細 -->
-          <table>
-            <tbody>
-              <tr align="center">
-                  <!-- 顧客ナンバー〇 -->
-                <tr align="center">
-                  <label for="id">
-                    会員ID
-                  </label>
-                    <%= @customer.id %>
-                </tr><br />
-                  <!-- 氏名〇 -->
-                <tr align="center">
-                  <label for="name">
-                    氏名
-                  </label>
-                    <%= @customer.last_name %>
-                    <%= @customer.first_name %>
-                </tr><br />
-                  <!-- 氏名kana〇 -->
-                <tr align="center">
-                  <label for="name">
-                    フリガナ
-                  </label>
-                    <%= @customer.last_name_kana %>
-                    <%= @customer.first_name_kana %>
-                </tr><br />
-                  <!-- 郵便番号〇 -->
-                <tr align="center">
-                  <label for="address">
-                    郵便番号
-                  </label>
-                    <%= @customer.address %>
-                </tr><br />
-                  <!-- 住所〇 -->
-                <tr align="center">
-                  <label for="postal_code">
-                    住所
-                  </label>
-                    <%= @customer.postal_code %>
-                </tr><br />
-                  <!-- 電話番号〇 -->
-                <tr align="center">
-                  <label for="telephone_number">
-                    電話番号
-                  </label>
-                    <%= @customer.telephone_number %>
-                </tr><br />
-                  <!-- メールアドレス〇 -->
-                <tr align="center">
-                  <label for="email">
-                    メールアドレス
-                  </label>
-                    <%= @customer.email %>
-                </tr><br />
-                  <!-- 会員ステータス△改行したい,文字色-->
-                <tr align="center">
-                  <label for="is_active">
-                    会員ステータス
-                  </label>
-                    <% if @customer.is_active %>
-                      <p>有効</p>
-                    <% else %>
-                      <p>無効</p>
-                    <% end %>
-                </tr><br />
-                  <!-- 編集する〇 -->
-                <tr align="center">
-                  <%= link_to "編集する", admin_customers_edit_path, class:"btn btn-success" %>
-                </tr>
-                  <!-- 注文一覧を見る〇 -->
-                <tr align="center">
-                  <%= link_to "注文一覧を見る", admin_root_path, class:"btn btn-primary" %>
-                </tr>
-              </tr>
-            </tbody>
-          </table>
-          
-        </div>
-      </div>
+          <!-- 会員情報一覧 -->
+        <tbody>
+              <!-- 顧客ナンバー〇 -->
+            <tr>
+              <th>会員ID</th>
+                <td>
+                  <%= @customer.id %>
+                </td>
+              <th></th>
+            </tr>
+              <!-- 氏名〇 -->
+            <tr>
+              <th>氏名</th>
+                <td>
+                  <%= @customer.last_name %>
+                  <%= @customer.first_name %>
+                </td>
+            </tr>
+              <!-- 氏名kana〇 -->
+            <tr>
+              <th>フリガナ</th>
+                <td>
+                  <%= @customer.last_name_kana %>
+                  <%= @customer.first_name_kana %>
+                </td>
+            </tr>
+              <!-- 郵便番号〇 -->
+            <tr>
+              <th>郵便番号</th>
+                <td>
+                  <%= @customer.address %>
+                </td>
+            </tr>
+              <!-- 住所〇 -->
+            <tr>
+              <th>住所</th>
+                <td>
+                  <%= @customer.postal_code %>
+                </td>
+            </tr>
+              <!-- 電話番号〇 -->
+            <tr>
+              <th>電話番号</th>
+                <td>
+                  <%= @customer.telephone_number %>
+                </td>
+            </tr>
+              <!-- メールアドレス〇 -->
+            <tr>
+              <th>メールアドレス</th>
+                <td>
+                  <%= @customer.email %>
+                </td>
+            </tr>
+              <!-- 会員ステータス〇-->
+            <tr>
+              <th>会員ステータス</th>
+                <td>
+                  <% if @customer.is_active %>
+                    <span style="color: green;">有効</span>
+                  <% else %>
+                    <span style="color: lightgray;">退会</span>
+                  <% end %>
+                </td>
+            </tr>
+              <!-- 編集する -->
+            <td>
+              <%= link_to "編集する", admin_customers_edit_path, class:"btn btn-success" %>
+            </td>
+              <!-- 注文一覧を見る〇 -->
+            <td>
+              <%= link_to "注文一覧を見る", admin_root_path, class:"btn btn-primary" %>  
+            </td>
+            
+        </tbody>
+        
+      </table>
+      
     </div>
-  </main>
-  
-  
+  </div>
+

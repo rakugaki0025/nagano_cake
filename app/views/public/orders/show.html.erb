@@ -1,123 +1,123 @@
 <!-- nagano_view_pablic_orders_show -->
- 
-<h1>pablic_orders_show_注文履歴詳細画面</h1>
-  
-  
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-        
-        <h3>注文履歴詳細画面</h3>
-        
-          <!-- 注文情報 = 注文日,配送先,支払方法 -->
-        <table border="1" width="600"  height="50">
-          <h5>注文情報</h5>
-            <!-- 注文日,配送先,注文商品,支払金額 -->
-          <thead>
-            <tr>
-              <th>注文日</th>
-              <th>配送先</th>
-              <th>支払方法</th>
-            </tr>
-          </thead>
-            <!-- 注文日,配送先,注文商品,支払金額 -->
-          <tbody>
-              <tr>
-                <td>
-                  <%= @order.created_at %>
-                </td>
-                
-                <td>
-                  <%= @order.post_code %><br />
-                  <%= @order.address %><br />
-                  <%= @order.name %>
-                </td>
-                  <!-- 支払方法,日本語化表記済〇 -->
-                <td>
-                  <%= @order.payment_method_i18n %>
-                </td>
-                
-              </tr>
-              
-          </tbody>
+
+
+  <div class="row">
+    <div class="mx-auto auto col-9">
+    
+    <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:280px;
+        height:35px;
+       }
+      </style>
+      
+    <h3 class="example" align="center">注文履歴詳細画面</h3>
+    
+      <!-- 注文情報 = 注文日,配送先,支払方法 -->
+    <table border="1" width="800"  height="100">
+      <h5>注文情報</h5>
+        <!-- 注文日,配送先,注文商品,支払金額 -->
+      <thead>
+        <tr class="example">
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>支払方法</th>
+        </tr>
+      </thead>
+        <!-- 注文日,配送先,注文商品,支払金額 -->
+      <tbody>
+          <tr>
+            <td>
+              <%= @order.created_at %>
+            </td>
+            
+            <td>
+              <%= @order.post_code %><br />
+              <%= @order.address %><br />
+              <%= @order.name %>
+            </td>
+              <!-- 支払方法,日本語化表記済〇 -->
+            <td>
+              <%= @order.payment_method_i18n %>
+            </td>
+            
+          </tr>
           
-        </table>
-        
-          <!-- 請求情報 = 商品合計,配送料,ご請求額 -->
-        <table border="1" width="600"  height="50">
-          <h5>請求情報</h5>
-            <!-- 商品合計,配送料,ご請求額 -->
-          <thead>
-            <tr>
-              <th>商品合計</th>
-              <th>配送料金</th>
-              <th>ご請求額</th>
-            </tr>
-          </thead>
-            <!-- 商品合計,配送料,ご請求額 -->
-          <tbody>
-            <tr>
-                <!-- 商品合計〇 -->
-              <td>
-                <%= @sum %>
-              </td>
-                <!-- 配送料〇 -->
-              <td>
-                <%= @order.postage %>
-              </td>
-                <!-- ご請求額〇 -->
-              <td>
-                <%= @order.billing_amount %>
-              </td>
-            </tr>
-          </tbody>
-          
-        </table>
-        
-          <!-- 注文内容 -->
-        <table border="1" width="600"  height="50">
-          <h5>注文内容</h5>
-            <!-- 商品,単価(税込),個数,小計 -->
-          <thead>
-            <tr>
-              <th>商品</th>
-              <th>単価(税込)</th>
-              <th>個数</th>
-              <th>小計</th>
-            </tr>
-          </thead>
-            <!-- 商品,単価(税込),個数,小計 -->
-          <tbody>
-            <% @order.order_items.each do |order_item| %>
-              <tr>
-                  <!-- 商品 -->   
-                <td>
-                  <%= order_item.item.name %>
-                </td>
-                  <!-- 単価(税込) -->
-                <td>
-                  <%= order_item.tax_included_price %>
-                </td>
-                  <!-- 個数 -->
-                <td>
-                  <%= order_item.quantity %>
-                </td>
-                  <!-- 小計 -->
-                <td>
-                  <%= order_item.tax_included_price * order_item.quantity %>
-                </td>
-                     
-              </tr>
-            <% end %>
-                
-          </tbody>
-          
-        </table>
-        
-        </div>
-      </div>
+      </tbody>
+      
+    </table>
+      <!-- 請求情報 = 商品合計,配送料,ご請求額 -->
+    <table border="1" width="800"  height="100">
+      <h5>請求情報</h5>
+        <!-- 商品合計,配送料,ご請求額 -->
+      <thead>
+        <tr class="example">
+          <th>商品合計</th>
+          <th>配送料金</th>
+          <th>ご請求額</th>
+        </tr>
+      </thead>
+        <!-- 商品合計,配送料,ご請求額 -->
+      <tbody>
+        <tr>
+            <!-- 商品合計〇 -->
+          <td>
+            <%= number_with_delimiter(@sum, delimiter: ',') %>
+          </td>
+            <!-- 配送料〇 -->
+          <td>
+            <%= @order.postage %>
+          </td>
+            <!-- ご請求額〇 -->
+          <td>
+            <%= number_with_delimiter(@order.billing_amount, delimiter: ',') %>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+      <!-- 注文内容 -->
+    <table border="1" width="800"  height="100">
+      <h5>注文内容</h5>
+        <!-- 商品,単価(税込),個数,小計 -->
+      <thead>
+        <tr class="example">
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+        <!-- 商品,単価(税込),個数,小計 -->
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+              <!-- 商品 -->   
+            <td>
+              <%= order_item.item.name %>
+            </td>
+              <!-- 単価(税込) -->
+            <td>
+              <%= order_item.tax_included_price %>
+            </td>
+              <!-- 個数 -->
+            <td>
+              <%= order_item.quantity %>
+            </td>
+              <!-- 小計 -->
+            <td>
+              <%= order_item.tax_included_price * order_item.quantity %>
+            </td>
+                 
+          </tr>
+        <% end %>
+            
+      </tbody>
+      
+    </table>
+    
     </div>
-  </main>
-
-
+  </div>
+      

@@ -1,53 +1,74 @@
 <!-- nagano_view_pablic_orders_new -->
- 
-<h1>pablic_orders_new_注文情報入力画面</h1>
-  
-  
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-        
-        <h3>注文情報入力画面</h3>
-        
-        <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
-          <table>
-              
-            <h4>支払方法</h4>
-                <!-- クレジットカード△ -->
-              <div>  
-                <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-                <%= f.label :クレジットカード %><br />
+
+
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-11">
+      
+      <!-- 色指定のスタイル -->
+    <style>
+     .example {
+      background-color: #F0F0F0;
+      width:220px;
+      height:30px;
+     }
+    </style>
+    
+    <th>
+      <h4 class="example" align="center">注文情報入力画面</h4>
+    </th>
+    
+    <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+      <table width="800"  height="200">
+          <!-- 注文情報入力画面〇 -->
+          <!-- クレジットカード,銀行振込,お届け先〇 -->
+        <thead>
+            <!-- 支払方法 -->
+          <tr>
+            <th>
+              <h4 align="center">支払方法</h4>
+            </th>
+              <!-- クレジットカード〇 -->
+            <td>
+                <!-- クレジットカード -->
+              <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+              <%= f.label :クレジットカード %><br />
                   <!--%= f.radio_button :payment_method, Order.payment_methods.key(0) %-->
                   <!--%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %-->
-              </div>
-                <!-- 銀行振込△ -->
-              <div>    
-                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                <%= f.label :銀行振込 %>
+                
+                <!-- 銀行振込〇 -->
+              <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+              <%= f.label :銀行振込 %>
                   <!--%= f.radio_button :payment_method, Order.payment_methods.key(1) %-->
                   <!--%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%-->
-              </div>
-            
-            <h4>お届け先</h4>
-                <!-- ご自身の△ -->
-              <div>
-                <%= f.label :address, "ご自身の住所" %><br />
-                <%= @customer.postal_code %>
-                <%= @customer.address %><br />
-                <%= @customer.last_name %>
-                <%= @customer.first_name %>
-              </div>
-                <!-- 確認画面へ進む△ -->
-              <strong class="form-group">
-                <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
-              </strong>
-              
-          </table>
-        <% end %>
-        </div>
+            </td>
+          </tr>
+            <!-- お届け先 -->
+          <tr>
+              <!-- お届け先 -->
+            <th>
+              <h4 align="center">お届け先</h4>
+            </th>
+              <!-- ご自身の〇 -->
+            <td>
+              <%= f.label :address, "ご自身の住所" %><br />
+              <%= @customer.postal_code %>
+              <%= @customer.address %><br />
+              <%= @customer.last_name %>
+              <%= @customer.first_name %>
+            </td>
+          </tr>
+          
+        </thead>
+        
+      </table>
+        
+        <!-- 確認画面へ進む -->
+      <div>
+        <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
       </div>
+        
+    <% end %>
     </div>
-  </main>
-
-
+  </div>
+      
+      

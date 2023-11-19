@@ -1,11 +1,12 @@
 <!-- nagano_view_admin_customers_edit_top -->
- 
-<h1>admin_Customers_edit_顧客編集画面</h1>
-  
+
+
   <!-- エラーメッセージ -->
   <% if @customer.errors.any? %>
     <!-- エラーカウント -->
-    <h2><%= @customer.errors.count %>errors prohibited this obj from being saved:</h2>
+    <h2>
+      <%= @customer.errors.count %>errors prohibited this obj from being saved:
+    </h2>
       <ul>
         <% @cusotmer.errors.full_messages.each do |message| %>
           <li>
@@ -14,86 +15,107 @@
         <% end %>
       </ul>
   <% end %>
-
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+  
+  
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
+      
+        <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:390px;
+        height:30px;
+       }
+      </style>
+        <!-- 会員情報編集 -->
+      <th>
+        <h4 class="example" align="center">
+          <%= @customer.last_name %>
+          <%= @customer.first_name %>
+          さんの会員情報編集
+        </h4>
+      </th>
+        
+      <%= form_with model: @customer, url: admin_customers_update_path, method: :patch do |f| %>
           
-          <h3>会員情報編集</h3>
-            
-            <%= form_with model: @customer, url: admin_customers_update_path, method: :patch do |f| %>
-                <!-- 会員ID〇 -->
-              <div>
-                <label for="id">
-                  会員ID
-                </label>
+          <!-- 会員情報編集 -->
+        <table width="550"  height="350">
+          <tbody>
+              <!-- 会員ID〇 -->
+            <tr>
+              <th>会員ID</th>
+                <td>
                   <%= @customer.id %>
-              </div><br />
-                <!-- 氏名〇 -->
-              <div class="form-group">
-                <label for="name">
-                  氏名
-                </label>
+                </td>
+            </tr>
+              <!-- 氏名〇 -->
+            <tr>
+              <th>氏名</th>
+                <td>
                   <%= f.text_field :last_name %>
                   <%= f.text_field :first_name %>
-              </div>
-                <!-- 氏名kana〇 -->
-              <div class="form-group">
-                <label for="name">
-                  フリガナ
-                </label>
+                </td>
+            </tr>
+              <!-- フリガナ〇 -->
+            <tr>
+              <th>フリガナ</th>
+                <td>
                   <%= f.text_field :last_name_kana %>
                   <%= f.text_field :first_name_kana %>
-              </div>
-                <!-- 郵便番号〇 -->
-              <div class="form-group">
-                <label for="postal_code">
-                  郵便番号
-                </label>
+                </td>
+            </tr>
+              <!-- 郵便番号〇 -->
+            <tr>
+              <th>郵便番号</th>
+                <td>
                   <%= f.text_field :postal_code %>
-              </div>
-                <!-- 住所〇 -->
-              <div class="form-group">
-                <label for="address">
-                  住所
-                </label>
+                </td>
+            </tr>
+              <!-- 住所〇 -->
+            <tr>
+              <th>住所</th>
+                <td>
                   <%= f.text_field :address %>
-              </div>
-                <!-- 電話番号〇 -->
-              <div class="form-group">
-                <label for="telephone_number">
-                  電話番号
-                </label>
+                </td>
+            </tr>
+              <!-- 電話番号〇 -->
+            <tr>
+              <th>電話番号</th>
+                <td>
                   <%= f.text_field :telephone_number %>
-              </div>
-                <!-- メールアドレス〇 -->
-              <div class="form-group">
-                <label for="email">
-                  メールアドレス
-                </label>
+                </td>
+            </tr>
+              <!-- メールアドレス〇 -->
+            <tr>
+              <th>メールアドレス</th>
+                <td>
                   <%= f.text_field :email %>
-              </div>
-                <!-- 会員ステータス〇 -->
-              <div class="form-group">
-                <label for="is_active">
-                  会員ステータス
-                </label>
+                </td>
+            </tr>
+              <!-- 会員ステータス〇 -->
+            <tr>
+              <th>会員ステータス</th>
+                <td>
                   <%= f.radio_button :is_active, true %>
                     <%= f.label :is_active, "有効" %>
-                    
                   <%= f.radio_button :is_active, false %>
                     <%= f.label :is_active, "無効" %>
-              </div>
-                <!-- 新規登録〇 -->
-              <strong class="form-group">
+                </td>
+            </tr>
+              <!-- 新規登録〇 -->
+            <tr>
+              <td>
                 <%= f.submit '変更を保存', class:"btn btn-success" %>
-              </strong>
-            <% end %>
-            
-        </div>
-      </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          
+      <% end %>
+        
     </div>
-  </main>
+  </div>
+  
   
   

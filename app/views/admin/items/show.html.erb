@@ -1,53 +1,67 @@
 <!-- nagano_view_admin_items_show -->
- 
-<h1>_admin_show_商品詳細画面</h1>
-  
+
 
     <!-- フラッシュメッセージ投稿成功時 -->
   <div>
     <%= flash[:notice] %>
   </div>
-
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11">
-            <!-- 商品画像,商品名,商品説明,税込価格 -->
-          <table>
-            
-            <tbody>
-                <!-- 商品画像_(別型表示記載)〇 -->
+  
+    <!-- 商品画像,商品名,商品説明,税込価格 -->
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-5">
+      
+        <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:120px;
+        height:30px;
+       }
+      </style>
+      
+        <!-- 商品画像,商品名,商品説明,税込価格 -->
+      <table width="450"  height="80">
+        
+        <h4 class="example" align="center">商品詳細</h4>
+          <!-- 商品詳 -->
+        <tbody>
+            <!-- 商品画像_(別型表示記載)〇 -->
+          <tr>
+            <%= image_tag @item.get_image, size: "360x300" %>
+              <!--%= image_tag @item.get_image %-->
+          </tr>
+            <!-- 商品名〇 -->
+          <tr>
+            <th>商品名</th>
               <td>
-                <%= image_tag @item.get_image, size: "360x300" %>
-                <!--%= image_tag @item.get_image %-->
+                <%= @item.name %>
               </td>
-                <!-- 商品名,商品説明,税込価格 -->  
+          </tr><br />
+            <!-- 商品説明〇 -->
+          <tr>
+            <th>商品説明</th>
               <td>
-                  <!-- 商品名〇 -->
-                <label for="name">商品名</label>
-                  <%= @item.name %>
-                <br />
-                  <!-- 商品説明〇 -->
-                <label for="introduction">商品説明</label>
-                  <%= @item.introduction %>
-                <br />
-                  <!-- 税込価格(税抜価格),カンマ表示〇 -->
-                <label for="price">税込価格(税抜価格)</label>
-                  <%= number_with_delimiter(@item.with_tax_price, delimiter: ',') %>円
-                  (<%= number_with_delimiter(@item.price, delimiter: ',') %>)円
+                <%= @item.introduction %>
               </td>
-              
-            </tbody>
+          </tr><br />
+            <!-- 税込価格(税抜価格),カンマ表示〇 -->
+          <tr>
+            <th>税込価格(税抜価格)</th>
+              <td>
+                <%= number_with_delimiter(@item.with_tax_price, delimiter: ',') %>円
+                (<%= number_with_delimiter(@item.price, delimiter: ',') %>)円
+              </td>
+          </tr><br />
+                
+        </tbody>
             
-          </table>
+      </table>
           
-        </div>
-            <!-- 編集する -->
-          <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-            <%= link_to "編集する", admin_edit_path, class:"btn btn-success" %>
-          </div>
+        <!-- 編集する -->
+      <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-4">
+        <%= link_to "編集する", admin_edit_path, class:"btn btn-success" %>
       </div>
+          
     </div>
-  </main>
-
+  </div>
 

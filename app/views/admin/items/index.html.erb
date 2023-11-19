@@ -1,69 +1,70 @@
 <!-- nagano_view_admin_items_index -->
- 
-<h1>_admin_index_商品一覧画面</h1>
-  
 
-  <main>
-    <div class="container">
-      <div class="row">
-        
-        <!-- 商品新規登録画面へ,アイコン済〇 -->
-            <div>
-              <%= link_to admin_new_path, class: 'nav-link text-black' do %>
-                <i class="fas fa-plus-circle" aria-hidden="true"></i>
-              <% end %>
-            </div>
-        
-        <div class="mx-auto auto col-11">
-            
-          <h3>商品一覧</h3>
-                <!-- 商品新規登録画面へ,アイコン済〇 -->
-            <div>
-              <%= link_to admin_new_path, class: 'nav-link text-black' do %>
-                <i class="fas fa-plus-circle" aria-hidden="true"></i>
-              <% end %>
-            </div>
-            
+
+  <div class="row">
+        <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:140px;
+        height:30px;
+       }
+      </style>
+      
+        <!-- 商品一覧,アイコン -->
+      <table width="950"  height="50">
+        <tr>
+            <!-- 商品一覧 -->
+          <td>
+            <h4 class="example" align="center">商品一覧</h4>
+          </td>
+            <!-- 商品新規登録画面へ,アイコン済〇 -->
+          <td align="right">
+            <%= link_to admin_new_path, class: 'nav-link text-black' do %>
+              <i class="fas fa-plus-circle" aria-hidden="true"></i>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      
+    <div class="mx-auto auto col-11">
+      
+        <!-- 商品ID,商品名,価格_一覧 -->
+      <table border="1" width="900"  height="500">
                 <!-- 商品ID,商品名,価格_一覧 -->
-          <table border="1" width="900"  height="500">
-                <!-- 商品ID,商品名,価格_一覧 -->
-            <thead>
-              <tr>
-                <th>商品ID</th>
-                <th>商品名</th>
-                <th>税抜き価格</th>
-              </tr>
-            </thead>
+        <thead class="example">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+          </tr>
+        </thead>
                 <!-- 商品一覧表示〇 -->
-            <% @items.each do |item| %>
+        <% @items.each do |item| %>
                 <!-- 商品ID,商品名,価格_投稿内容〇 -->
-            <tbody>
-              <tr>
-                  <!-- 商品ナンバー〇 -->
-                <td>
+        <tbody>
+          <tr>
+              <!-- 商品ナンバー〇 -->
+            <td>
                   <%= item.id %>
                 </td>
-                  <!-- 商品名〇 -->
-                <td>
+              <!-- 商品名〇 -->
+            <td>
                   <%= link_to admin_show_path(item.id) do %>
                     <%= item.name %>
                   <% end %>
                 </td>
-                  <!-- 商品価格〇 -->
-                <td>
+              <!-- 商品価格〇 -->
+            <td>
                   <%= number_with_delimiter(item.price, delimiter: ',') %>
                 </td>
-              </tr>
-              
-            </tbody>
+          </tr>
+        </tbody>
             
-            <% end %>
-            
-          </table>
+        <% end %>
+        
+      </table>
           
-        </div>
-      </div>
     </div>
-  </main>
-
-
+  </div>
+      

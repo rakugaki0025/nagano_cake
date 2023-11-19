@@ -1,72 +1,61 @@
   <!-- nagano_view_pablic_homes_top -->
   
-<h1>pablic_homes_top画面</h1>
-
-
-<html>  
+  
     <!-- フラッシュメッセージ投稿成功時 -->
   <div>
     <%= flash[:notice] %>
   </div>
   
-  <main>
-    <p id="notice"></p>
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-9">
+      
+    <h2>ようこそ、ながのCAKEへ！</h2>
     
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-9">
-          
-        <h2>ようこそ、ながのCAKEへ！</h2>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+      
+    
+    <h3>新着商品</h3>
+        <!-- "." = class , #.example = id="example" , 全体 tr{...} -->
+        <!-- display: flex -->
+      <style>
+        .example{
+         display: flex;
+         align-items: flex-start;
+         flex-wrap: wrap;
+        }
+      </style>
+         <!-- 商品一覧表示,displayflex -->
+      <table border="1" width="772" height="130">
+          <!-- 商品画像,商品名,アイテム価格 -->
+        <tbody>
+          <tr class="example">
+            <% @items.each do |item| %>
+              <td>
+                  <!-- 商品画像〇 -->
+                <%= image_tag item.get_image, size: "150x100" %> <br />
+                
+                  <!-- 商品名〇 -->
+                <%= link_to item_path(item.id) do %>
+                  <%= item.name %>
+                <% end %> <br />
+                
+                  <!-- アイテム価格 -->
+                <%= item.price %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
         
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。
-          
-        
-        <h3>新着商品</h3>
-            <!-- 商品一覧表示,displayflex -->
-            <!-- "." = class , #.example = id="example" , 全体 tr{...} -->
-          <style>
-            .example{
-             display: flex;
-             align-items: flex-start;
-             flex-wrap: wrap;
-            }
-          </style>
-          
-          <table border="1" width="772" height="130">
-              <!-- 商品画像,商品名,アイテム価格 -->
-            <tbody>
-              <tr class="example">
-                <% @items.each do |item| %>
-                  <td>
-                      <!-- 商品画像〇 -->
-                    <%= image_tag item.get_image, size: "150x100" %> <br />
-                    
-                      <!-- 商品名〇 -->
-                    <%= link_to item_path(item.id) do %>
-                      <%= item.name %>
-                    <% end %> <br />
-                    
-                      <!-- アイテム価格 -->
-                    <%= item.price %>
-                  </td>
-                <% end %>
-              </tr>
-            </tbody>
-            
-          </table>
-          
-            <!-- 全ての商品を見る -->
-          <div>
-            <%= link_to "全ての商品を見る", items_path %>
-          </div>
-          
-        </div>
+      </table>
+      
+        <!-- 全ての商品を見る -->
+      <div>
+        <%= link_to "全ての商品を見る", items_path %>
       </div>
+      
     </div>
-    
-  </main>
-   
-</html>
-
+  </div>
+  
+  

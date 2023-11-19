@@ -8,8 +8,6 @@ class Public::CustomersController < ApplicationController
         ## current_(models名)
       @customer = current_customer
       
-        
-      
   end
   
         ## 顧客の登録情報編集画面

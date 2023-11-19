@@ -1,56 +1,63 @@
 <!-- nagano_view_admin_items_new_top -->
- 
-<h1>log_in_後_adomin_new_商品新規登録画面</h1>
-  
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-6">
-            <!-- 商品新規登録画面 -->
-          <div>
-            <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-              <!--<table>-->
-                
-                <!-- 商品画像△ -->
-              <div class="form-group">
-                <label for="image">
-                  商品画像
-                </label>
-                  <%= f.file_field :image, accept: "image/*" %>
-              </div>
-                <!-- 商品名△ -->
-              <div class="form-group">
-                <label for="name">
-                  商品名
-                </label>
-                  <%= f.text_field :name %>
-              </div>
-                <!-- 商品説明△ -->
-              <div class="form-group">
-                <label for="intoroduction">
-                 商品説明
-                </label>
-                  <%= f.text_field :introduction %>
-              </div>
-                <!-- 税込み価格△ -->
-              <div class="form-group">
-                <label for="price">
-                 税込み価格
-                </label>
-                  <%= f.text_field :price %>
-              </div>
-                <!-- 新規登録△ -->
-              <strong class="form-group">
-                <%= f.submit '新規登録', class:"btn btn-success" %>
-              </strong>
-            　
-              <!--</table>-->
-              
-            <% end %>
-          </div>
-        </div>
-      </div>
+
+
+  <div class="row">
+    <div class="mx-auto auto col-11 col-sm10 col-lg col-xl-5">
+            
+      <!-- 色指定のスタイル -->
+    <style>
+     .example {
+      background-color: #F0F0F0;
+      width:160px;
+      height:30px;
+     }
+    </style>
+            
+    <h4 class="example" align="center">商品新規登録</h4>
+    
+    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+        <!-- 商品新規登録画面 -->
+      <table width="400"  height="300">
+        
+          <!-- 商品画像〇 -->
+        <tr>
+          <th>商品画像</th>
+            <td>
+              <%= f.file_field :image, accept: "image/*" %>
+            </td>
+        </tr>
+          <!-- 商品名〇 -->
+        <tr>
+          <th>商品名</th>
+            <td>
+              <%= f.text_field :name %>
+            </td>
+        </tr>
+          <!-- 商品説明〇 -->
+        <tr>
+          <th>商品説明</th>
+            <td>
+              <%= f.text_field :introduction %>
+            </td>
+        </tr>
+          <!-- 税込み価格〇 -->
+        <tr>
+          <th>税抜価格</th>
+            <td>
+              <%= f.text_field :price %>円
+            </td>
+        </tr>
+          <!-- 新規登録〇 -->
+        <tr>
+          <td>
+            <%= f.submit '新規登録', class:"btn btn-success" %>
+          </td>
+        </tr>
+                  
+      </table>
+    <% end %>
+          
     </div>
-  </main>
-
-
+  </div>
+  
+  

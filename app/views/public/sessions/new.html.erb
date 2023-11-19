@@ -1,50 +1,57 @@
   <!-- nagano_views_pabulic_sessions_new -->
-<h2>public_Log in_#_sessions_newページ</h2>
-
-
-<main>
-  <p id="notice"></p>
   
-  <div class="container px-5 px-sm-0">
-    <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+        <!-- 色指定のスタイル -->
+      <style>
+       .example {
+        background-color: #F0F0F0;
+        width:300px;
+        height:28px;
+       }
+      </style>
+      
+      <h5 class="example" align="center">会員の方はこちらからログイン</h5>
+      
+        <%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
           
-        
-        <h1>顧客_ログイン画面</h1>
-        
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <table width="400"  height="200">
               <!-- e-mail_box -->
-            <div class="field">
-              <%= f.label :メールアドレス %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </div>
+            <tr>
+              <th><%= f.label :メールアドレス %></th>
+              <th>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </th>
+            </tr>
               <!-- password_box -->
-            <div class="field">
-              <%= f.label :パスワード %>
-              <%= f.password_field :password, autocomplete: "current-password" %>
-            </div>
+            <tr>
+              <th><%= f.label :パスワード %></th>
+                <th>
+                  <%= f.password_field :password, autocomplete: "current-password" %>
+                </th>
+            </tr>
               <!-- Log_in_box -->
-            <div class="actions">
-              <%= f.submit "Log in" %>
-            </div>
-          <% end %>
-        
-        <h4>会員登録がお済みでない方</h4>
-        
-          <%= render "public/shared/links" %>
+            <tr>
+              <th>
+                <%= f.submit "ログイン", class:"btn btn-primary" %>
+              </th>
+            </tr>
+            
+          </table>
           
-        から新規登録を行ってください。
+        <% end %>
+      
+      <h5 class="example" align="center">会員登録がお済みでない方</h5>
+      
+        <table>
+          <th>
+            <%= render "public/shared/links" %>から新規登録を行ってください。
+          </th>
+        </table>
         
-      </div>
     </div>
   </div>
-</main>
-
-
-<!--<!% if devise_mapping.rememberable? %>-->
-              <!-- remember_me_box -->
-          <!--  <div class="field">-->
-          <!--    <!%= f.check_box :remember_me %>-->
-          <!--      <!%= f.label :remember_me %>-->
-          <!--  </div>-->
-          <!--<!% end %>-->
+  
+  

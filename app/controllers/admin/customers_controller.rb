@@ -22,7 +22,6 @@ class Admin::CustomersController < ApplicationController
         ## 投稿したcutomer :id を取得するレコード
       @customer = Customer.find(params[:id])
       
-      
   end
   
         ## 顧客編集画面 admin_customers_edit_path
